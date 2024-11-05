@@ -143,6 +143,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\img\logo_script-removebg-preview 1.png" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -172,9 +173,9 @@
     <Content Include="Scripts\angular-touch.min.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
-    <Content Include="Scripts\AngularScripts\controller.js" />
-    <Content Include="Scripts\AngularScripts\module.js" />
-    <Content Include="Scripts\AngularScripts\service.js" />
+    <Content Include="Scripts\AngularScripts\Controller.js" />
+    <Content Include="Scripts\AngularScripts\Module.js" />
+    <Content Include="Scripts\AngularScripts\Service.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
