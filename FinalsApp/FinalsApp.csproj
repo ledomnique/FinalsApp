@@ -969,6 +969,7 @@
     <Content Include="Scripts\version.json" />
     <Content Include="Views\Shared\_LandingLayout.cshtml" />
     <Content Include="Views\Home\Landing.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
