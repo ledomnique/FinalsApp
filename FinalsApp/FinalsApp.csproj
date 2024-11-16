@@ -987,6 +987,7 @@
     <Content Include="Views\Home\Homepage.cshtml" />
     <Content Include="Views\Shared\_FindBook.cshtml" />
     <Content Include="Views\Home\FindBook.cshtml" />
+    <Content Include="Views\Home\login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
