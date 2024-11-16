@@ -1,0 +1,50 @@
+﻿@{
+    Layout = "~/Views/Shared/_FindBook.cshtml";
+}
+
+<body ng-app="FinalsApplication" ng-controller="FinalsController">
+    <!--Navigation Bar-->
+    <header class="header">
+        <div class="navbar-fixed">
+            <nav class="z-depth-4">
+                <div class="nav-wrapper">
+                    <a href="@Url.Action("Homepage", "Home")" class="logo">
+                        <img src="~/Content/img/white-logo.png" class="logo-img" />
+                    </a>
+                    <ul class="right hide-on-med-and-down">
+                        <li><a href="@Url.Action("Homepage", "Home")">Home</a></li>
+                        <li><a href="#">Find A Book</a></li>
+                        <li><a href="#">Request A Book</a></li>
+                        <li><a href="#">Login</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!--Main Content-->
+
+
+    <!-- Footer -->
+    <footer class="page-footer bg-white">
+        <div class="footer-container d-flex align-items-center justify-content-between">
+            <!-- Logo Section -->
+            <div class="footer-logo">
+                <img src="~/Content/img/footer-logo.png" class="footer-img" alt="Footer Logo" />
+            </div>
+
+            <!-- Links Section -->
+            <div class="footer-links">
+                <ul class="list-inline mb-0">
+                    <li class="list-inline-item"><a href="#">About Us</a></li>
+                    <li class="list-inline-item"><a href="#">Terms & Conditions</a></li>
+                    <li class="list-inline-item"><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright white-text">
+            <p>© <span>Copyright</span> <strong class="px-1 sitename">Inkling</strong> <span>All Rights Reserved</span></p>
+        </div>
+    </footer>
+</body>
+
