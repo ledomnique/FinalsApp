@@ -134,7 +134,10 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\img\loginbg.jpg" />
+    <Content Include="Content\img\logo_dark-bg.png" />
     <Content Include="Content\img\logo_script-removebg-preview 1.png" />
+    <Content Include="Content\loginstyle.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -924,6 +927,9 @@
     <Content Include="Scripts\i18n\angular-locale_zh.js" />
     <Content Include="Scripts\i18n\angular-locale_zu-za.js" />
     <Content Include="Scripts\i18n\angular-locale_zu.js" />
+    <Content Include="Content\fonts\DellaRespira-Regular.ttf" />
+    <Content Include="Content\fonts\Montserrat-Regular.ttf" />
+    <Content Include="Content\fonts\NTR-Regular.ttf" />
     <None Include="Scripts\jquery-3.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.1.js" />
     <Content Include="Scripts\jquery-3.7.1.min.js" />
@@ -961,11 +967,11 @@
     <Content Include="Scripts\version.json" />
     <Content Include="Views\Shared\_HomepageLayout.cshtml" />
     <Content Include="Views\Home\Homepage.cshtml" />
-    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Shared\_LoginPageLayout.cshtml" />
+    <Content Include="Views\Home\LoginPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\fonts\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
