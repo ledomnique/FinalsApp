@@ -32,6 +32,10 @@ namespace FinalsApp.Controllers
             return View();
         }
 
+        public ActionResult LoginPage()
+        {
+            return View();
+        }
         public ActionResult FindBook()
         {
             return View();
