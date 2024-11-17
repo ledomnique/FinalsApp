@@ -36,5 +36,9 @@ namespace FinalsApp.Controllers
         {
             return View();
         }
+        public ActionResult FindBook()
+        {
+            return View();
+        }
     }
 }
