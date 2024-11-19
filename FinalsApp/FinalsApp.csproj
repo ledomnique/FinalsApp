@@ -1051,8 +1051,6 @@
     <Content Include="Views\Home\LoginPage.cshtml" />
     <Content Include="Views\Shared\_FindBook.cshtml" />
     <Content Include="Views\Home\FindBook.cshtml" />
-    <Content Include="Views\Home\UserLogin.cshtml" />
-    <Content Include="Views\Shared\_UserLoginLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
