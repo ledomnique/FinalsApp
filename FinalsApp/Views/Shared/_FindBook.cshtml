@@ -209,6 +209,30 @@
             padding: 0 0 0 0;
         }
 
+        /*Sidenav - responsive menu*/
+        i {
+            margin-top: 10px;
+            margin-right: 50px;
+        }
+
+        .sidenav {
+            background-color: antiquewhite;
+        }
+
+        .sidenav li {
+            margin-top: 20px;
+        }
+
+        .sidenav li a {
+            font-weight: 500;
+            font-size: 15px;
+        }
+
+        .sidenav li a:hover {
+            color: #49111C;
+            background-color: #a9927d;
+        }
+
         /*Custom Scrollbar*/
         /* width */
         ::-webkit-scrollbar {
@@ -241,5 +265,13 @@
     <script src="~/Scripts/AngularScripts/Module.js"></script>
     <script src="~/Scripts/AngularScripts/Controller.js"></script>
     <script src="~/Scripts/AngularScripts/Service.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Initialize Sidenav
+            const elems = document.querySelectorAll('.sidenav');
+            M.Sidenav.init(elems, { edge: 'right' });
+        });
+    </script>
 </body>
 </html>

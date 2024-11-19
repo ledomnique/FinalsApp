@@ -11,11 +11,15 @@
                     <a href="@Url.Action("Homepage", "Home")" class="logo">
                         <img src="~/Content/img/white-logo.png" class="logo-img" />
                     </a>
+                    <!-- Sidenav Trigger (Hamburger Icon) -->
+                    <a href="#" data-target="mobile-demo" class="sidenav-trigger">
+                        <i class="material-icons">menu</i>
+                    </a>
                     <ul class="right hide-on-med-and-down">
                         <li><a href="@Url.Action("Homepage", "Home")">Home</a></li>
-                        <li><a href="#">Find A Book</a></li>
+                        <li><a href="@Url.Action("FindBook", "Home")">Find A Book</a></li>
                         <li><a href="#">Request A Book</a></li>
-                        <li><a href="#">Login</a></li>
+                        <li><a href="@Url.Action("LoginPage", "Home")">Login</a></li>
                     </ul>
                 </div>
             </nav>
