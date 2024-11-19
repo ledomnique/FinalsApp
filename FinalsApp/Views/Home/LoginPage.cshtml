@@ -1,0 +1,54 @@
+﻿@{
+    Layout = "~/Views/Shared/_LoginPageLayout.cshtml";
+    ViewBag.Title = "Login";
+}
+
+<body>
+    @*Navigation Bar*@
+    <nav class="loginNav">
+        <div class="container">
+            <div class="left" id="logo">
+                <a href="/home">
+                    <img src="~/Content/img/logo_dark-bg.png" alt="Logo">
+                </a>
+            </div>
+
+            <ul class="right hide-on-med-and-down">
+                <li><a href="">Home</a></li>
+                <li><a href="">Main Library</a></li>
+                <li><a href="">Request a Book</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="row" style="margin-top: 50px;">
+        <div class="login-container">
+            <div class="register-section">
+                <h1 class="register-title">Create New Account</h1>
+                <p class="register-p">Explore an endless library of stories waiting to be discovered. From timeless classics to fresh new reads,</p>
+                <p class="register-p">
+                    <a href="">Register here.</a>
+                </p>
+                <a href="#" class="waves-effect waves-light btn">Learn More</a>
+            </div>
+
+            <div class="signin-card">
+                <h2 class="signin-title">Sign In</h2>
+
+                <div class="input-field">
+                    <i class="material-icons prefix" style="color: #ffffff;">account_box</i>
+                    <input id="userEmail" type="email" class="validate" ng-required="true" ng-model="userEmail" required>
+                    <label for="userEmail" style="color: #ffffff;">Email</label>
+                </div>
+
+                <div class="input-field">
+                    <i class="material-icons prefix" style="color: #ffffff;">lock</i>
+                    <input id="userPassword" type="password" class="validate" ng-required="true" ng-model="userPassword" required>
+                    <label for="userPassword" style="color: #ffffff;">Password</label>
+                </div>
+                <button type="button" class="waves-effect waves-light btn-small" ng-click="loginFunc()">Login</button>
+            </div>
+        </div>
+    </div>
+</body>
+
