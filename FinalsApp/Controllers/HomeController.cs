@@ -36,5 +36,10 @@ namespace FinalsApp.Controllers
         {
             return View();
         }
+
+        public ActionResult UserLogin()
+        {
+            return View();
+        }
     }
 }
