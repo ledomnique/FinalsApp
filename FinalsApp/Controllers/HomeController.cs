@@ -45,5 +45,10 @@ namespace FinalsApp.Controllers
         {
             return View();
         }
+
+        public ActionResult RequestBook()
+        {
+            return View();
+        }
     }
 }

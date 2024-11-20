@@ -8,14 +8,14 @@
     <nav class="loginNav">
         <div class="container">
             <div class="left" id="logo">
-                <a href="/home">
+                <a href="@Url.Action("Homepage", "Home")">
                     <img src="~/Content/img/logo_dark-bg.png" alt="Logo">
                 </a>
             </div>
 
             <ul class="right hide-on-med-and-down">
                 <li><a href="@Url.Action("Homepage", "Home")">Home</a></li>
-                <li><a href="#">Request A Book</a></li>
+                <li><a href="@Url.Action("RequestBook","Home")">Request A Book</a></li>
                 <li><a href="@Url.Action("FindBook", "Home")">Find A Book</a></li>
             </ul>
         </div>

@@ -1,9 +1,5 @@
-﻿@{
-    Layout = "~/Views/Shared/_FindBook.cshtml";
-    ViewBag.Title = "Find A Book";
-}
+﻿<body ng-app="FinalsApplication" ng-controller="FinalsController">
 
-<body ng-app="FinalsApplication" ng-controller="FinalsController">
     <!--Navigation Bar-->
     <header class="header">
         <div class="navbar-fixed">
@@ -18,7 +14,7 @@
                     </a>
                     <ul class="right hide-on-med-and-down">
                         <li><a href="@Url.Action("Homepage", "Home")">Home</a></li>
-                        <li><a href="@Url.Action("FindBook", "Home")">Find A Book</a></li>
+                        <li><a href="@Url.Action("FindBook","Home")">Find A Book</a></li>
                         <li><a href="@Url.Action("RequestBook","Home")">Request A Book</a></li>
                         <li><a href="@Url.Action("LoginPage", "Home")">Login</a></li>
                     </ul>
@@ -35,8 +31,8 @@
         <li><a href="@Url.Action("LoginPage", "Home")">Login</a></li>
     </ul>
 
-    <!--Main Content-->
-
+    <!--Form Content-->
+    
 
     <!-- Footer -->
     <footer class="page-footer bg-white">
@@ -60,4 +56,3 @@
         </div>
     </footer>
 </body>
-
