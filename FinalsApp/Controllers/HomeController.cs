@@ -50,5 +50,10 @@ namespace FinalsApp.Controllers
         {
             return View();
         }
+
+        public ActionResult RegisterPage()
+        {
+            return View();
+        }
     }
 }

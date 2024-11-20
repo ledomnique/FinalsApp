@@ -64,7 +64,7 @@
             justify-content: center; /* Horizontally center the content */
         }
 
-         .login-container {
+        .login-container {
             flex: 1;
             display: flex;
             justify-content: space-between;
@@ -91,10 +91,10 @@
             font-family: "Montserrat-Regular", sans-serif;
         }
 
-        .register-p a {
-            color: white;
-            text-decoration: underline;
-        }
+            .register-p a {
+                color: white;
+                text-decoration: underline;
+            }
 
         .waves-effect.waves-light.btn {
             background-color: #53503F;
@@ -131,7 +131,6 @@
             border-radius: 50px;
             width: 20%;
             margin-top: 20px;
-
         }
 
         i {
@@ -319,130 +318,125 @@
                 padding: 0 0 0 0;
             }
 
-    @@media (max-width: 992px) {
-    /* Login Container Adjustments */
-    .login-container {
-        flex-direction: column;
-        padding: 20px;
-        gap: 30px;
-        justify-content: center;
-        align-items: center;
-    }
+        @@media (max-width: 992px) {
+            /* Login Container Adjustments */
+            .login-container {
+                flex-direction: column;
+                padding: 20px;
+                gap: 30px;
+                justify-content: center;
+                align-items: center;
+            }
 
-    .register-section {
-        margin-left: 0;
-        text-align: center;
-        max-width: 100%;
-    }
+            .register-section {
+                margin-left: 0;
+                text-align: center;
+                max-width: 100%;
+            }
 
-    .signin-card {
-        margin-right: 0;
-        padding: 20px;
-        max-width: 100%;
-    }
+            .signin-card {
+                margin-right: 0;
+                padding: 20px;
+                max-width: 100%;
+            }
+            /* SignIn Card Adjustments */
+            .signin-title {
+                font-size: 28px;
+                text-align: center;
+            }
+            /* Make Inputs Full Width */
+            .signin-card .input-field {
+                width: 100%;
+            }
 
-    /* SignIn Card Adjustments */
-    .signin-title {
-        font-size: 28px;
-        text-align: center;
-    }
+            .waves-effect.waves-light.btn-small {
+                width: 50%;
+                font-size: 16px;
+            }
+            /* Navbar Adjustments */
+            .nav-wrapper ul {
+                display: none;
+            }
 
-    /* Make Inputs Full Width */
-    .signin-card .input-field {
-        width: 100%;
-    }
+            .sidenav {
+                display: block;
+            }
+            /* Footer Adjustments */
+            .footer-container {
+                flex-direction: column;
+                text-align: center;
+                padding: 20px;
+            }
 
-    .waves-effect.waves-light.btn-small {
-        width: 50%;
-        font-size: 16px;
-    }
+            .footer-links ul {
+                flex-direction: column;
+                align-items: center;
+            }
 
-    /* Navbar Adjustments */
-    .nav-wrapper ul {
-        display: none;
-    }
+                .footer-links ul li {
+                    margin: 10px 0;
+                }
 
-    .sidenav {
-        display: block;
-    }
+            .footer-logo {
+                margin-left: 0;
+                margin-bottom: 20px;
+            }
+        }
 
-    /* Footer Adjustments */
-    .footer-container {
-        flex-direction: column;
-        text-align: center;
-        padding: 20px;
-    }
+        /* For Small Screens (Phones) */
 
-    .footer-links ul {
-        flex-direction: column;
-        align-items: center;
-    }
+        @@media (max-width: 600px) {
+            /* Mobile Navbar Adjustments */
+            nav {
+                padding: 0 10px;
+                height: 60px;
+            }
 
-    .footer-links ul li {
-        margin: 10px 0;
-    }
+            .logo-img {
+                height: 50px;
+            }
+            /* Ensure input fields are easier to use on mobile */
+            .signin-card input[type="email"], .signin-card input[type="password"] {
+                padding: 15px;
+            }
 
-    .footer-logo {
-        margin-left: 0;
-        margin-bottom: 20px;
-    }
-}
+            .signin-card {
+                max-width: 90%;
+            }
 
-/* For Small Screens (Phones) */
+            .register-title {
+                font-size: 28px;
+            }
 
-@@media (max-width: 600px) {
-    /* Mobile Navbar Adjustments */
-    nav {
-        padding: 0 10px;
-        height: 60px;
-    }
+            .signin-title {
+                font-size: 24px;
+                text-align: center;
+            }
 
-    .logo-img {
-        height: 50px;
-    }
+            .waves-effect.waves-light.btn-small {
+                width: 70%;
+            }
+        }
 
-    /* Ensure input fields are easier to use on mobile */
-    .signin-card input[type="email"], .signin-card input[type="password"] {
-        padding: 15px;
-    }
+        /* For Extra Small Screens (Portrait Phones) */
+        @@media (max-width: 400px) {
+            /* Further adjustments for very small screens */
+            .signin-title {
+                font-size: 20px;
+            }
 
-    .signin-card {
-        max-width: 90%;
-    }
+            .register-title {
+                font-size: 24px;
+            }
 
-    .register-title {
-        font-size: 28px;
-    }
+            .signin-card {
+                padding: 15px;
+            }
 
-    .signin-title {
-        font-size: 24px;
-        text-align: center;
-    }
-
-    .waves-effect.waves-light.btn-small {
-        width: 70%;
-    }
-}
-
-/* For Extra Small Screens (Portrait Phones) */
-@@media (max-width: 400px) {
-    /* Further adjustments for very small screens */
-    .signin-title {
-        font-size: 20px;
-    }
-
-    .register-title {
-        font-size: 24px;
-    }
-
-    .signin-card {
-        padding: 15px;
-    }
-
-    .waves-effect.waves-light.btn-small {
-        width: 80%;
-    }
-}
+            .waves-effect.waves-light.btn-small {
+                width: 80%;
+            }
+        }
     </style>
 </head>
 

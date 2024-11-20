@@ -1,6 +1,6 @@
 ﻿@{
-    Layout = "~/Views/Shared/_LoginPageLayout.cshtml";
-    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_RegisterPageLayout.cshtml";
+    ViewBag.Title = "Register";
 }
 
 <body>
@@ -40,29 +40,36 @@
             <div class="row" style="margin-top: 50px;">
                 <div class="login-container">
                     <div class="register-section">
-                        <h1 class="register-title">Create New Account</h1>
-                        <p class="register-p">Explore an endless library of stories waiting to be discovered. From timeless classics to fresh new reads,</p>
+                        <h1 class="register-title">Already a Member?</h1>
+                        <p class="register-p">We're glad to have you back. Log in to continue exploring your favorite books and discover new ones waiting for you.</p>
                         <p class="register-p">
-                            <a href="@Url.Action("RegisterPage", "Home")">Register here.</a>
+                            <a href="@Url.Action("LoginPage", "Home")">Login.</a>
                         </p>
                         <a href="#" class="waves-effect waves-light btn">Learn More</a>
                     </div>
-
                     <div class="signin-card">
-                        <h2 class="signin-title">Sign In</h2>
-
+                        <h2 class="signin-title">Sign Up</h2>
                         <div class="input-field">
-                            <i class="material-icons prefix" style="color: #ffffff;">account_box</i>
-                            <input id="uEmail" type="email" class="validate" ng-required="true" ng-model="userEmail" required>
-                            <label for="uEmail" style="color: #ffffff;">Email</label>
+                            <i class="material-icons prefix">account_box</i>
+                            <input id="fName" type="text" class="validate" maxlength="30" pattern="[A-Za-z\s]+" ng-model="firstName" title="First Name" required>
+                            <label for="fName" style="color: #ffffff;">First Name</label>
                         </div>
-
                         <div class="input-field">
-                            <i class="material-icons prefix" style="color: #ffffff;">lock</i>
-                            <input id="uPassword" type="password" class="validate" ng-required="true" ng-model="userPassword" required>
+                            <i class="material-icons prefix">account_box</i>
+                            <input id="lName" type="text" class="validate" pattern="[A-Za-z]+" ng-model="lastName" title="Last Name" required>
+                            <label for="lName" style="color: #ffffff;">Last Name</label>
+                        </div>
+                        <div class="input-field">
+                            <i class="material-icons prefix" style="color: #ffffff;">email</i>
+                            <input id="userEmail" type="email" class="validate" ng-required="true" ng-model="userEmail" required>
+                            <label for="userEmail" style="color: #ffffff;">Email</label>
+                        </div>
+                        <div class="input-field">
+                            <i class="material-icons prefix">lock</i>
+                            <input id="uPassword" type="password" class="validate" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" ng-model="userPassword" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
                             <label for="uPassword" style="color: #ffffff;">Password</label>
                         </div>
-                        <button type="button" class="waves-effect waves-light btn-small" ng-click="loginFunc()">Login</button>
+                        <button type="button" class="waves-effect waves-light btn-small" ng-click="submitFunc()">Register</button>
                     </div>
                 </div>
             </div>
@@ -90,4 +97,8 @@
             <p>© <span>2024</span> <strong class="px-1 sitename">Inkling</strong> <span>All Rights Reserved</span></p>
         </div>
     </footer>
+
+
 </body>
+
+
