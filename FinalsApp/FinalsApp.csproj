@@ -174,9 +174,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\admin_tbContext.cs" />
-    <Compile Include="Models\admin_tbMap.cs" />
-    <Compile Include="Models\admin_tbModel.cs" />
+    <Compile Include="Models\inkling_dbContext.cs" />
+    <Compile Include="Models\admin_tblMap.cs" />
+    <Compile Include="Models\admin_tblModel.cs" />
+    <Compile Include="Models\RegistrationModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

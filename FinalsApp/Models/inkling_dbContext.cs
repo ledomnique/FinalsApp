@@ -8,24 +8,25 @@ using System.Web;
 namespace FinalsApp.Models
 {
     [DbConfigurationType(typeof(MySqlEFConfiguration))]
-    public class admin_tbContext : DbContext
+    public class inkling_dbContext : DbContext
     {
-        static admin_tbContext()
+        static inkling_dbContext()
         {
-            Database.SetInitializer<admin_tbContext>(null);
+            Database.SetInitializer<inkling_dbContext>(null);
         }
 
-        public admin_tbContext() : base("Name=inkling_db")
+        public inkling_dbContext() : base("Name=inkling_db")
         {
 
         }
 
-        public virtual DbSet<admin_tbMap> admin_tb { get; set; }
+        public virtual DbSet<admin_tblMap> admin_tbl { get; set; }
+        //if multiple tables in database, multiple virtual DbSet(s)
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Configurations.Add(new admin_tbMap());
+            modelBuilder.Configurations.Add(new admin_tblMap());
         }
     }
 }

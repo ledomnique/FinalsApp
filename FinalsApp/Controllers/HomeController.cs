@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FinalsApp.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -55,5 +56,15 @@ namespace FinalsApp.Controllers
         {
             return View();
         }
+
+        public void AddData(RegistrationModel registrationData)
+        {
+            using (var db = new inkling_dbContext())
+            {
+                //inserting
+
+            }
+        }
     }
 }
+

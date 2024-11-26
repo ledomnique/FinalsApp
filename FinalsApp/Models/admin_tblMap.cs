@@ -6,11 +6,12 @@ using System.Web;
 
 namespace FinalsApp.Models
 {
-    public class admin_tbMap : EntityTypeConfiguration<admin_tbModel>
+    public class admin_tblMap : EntityTypeConfiguration<admin_tblModel>
     {
-        public admin_tbMap() 
+        public admin_tblMap() 
         {
-            
+            HasKey(x => x.adminID);
+            ToTable("admin_tbl");
         }
     }
 }
