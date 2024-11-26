@@ -1,3 +1,3 @@
-﻿app.service("FinalsService", function ($http) {
+﻿app.service("FinalsAppService", function ($http) {
 
 });

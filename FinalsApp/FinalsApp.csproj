@@ -201,6 +201,7 @@
     <Content Include="Content\img\loginbg.jpg" />
     <Content Include="Content\img\logo_dark-bg.png" />
     <Content Include="Content\img\logo_script-removebg-preview 1.png" />
+    <Content Include="Content\img\request-bg.png" />
     <Content Include="Content\loginstyle.css" />
     <Content Include="Content\img\footer-logo.png" />
     <Content Include="Content\img\landing-image.jpg" />
@@ -1007,6 +1008,7 @@
     <Content Include="Scripts\materialize.js" />
     <Content Include="Scripts\materialize.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\newFile.js" />
     <Content Include="Scripts\sitemap.xml" />
     <Content Include="Scripts\test-bundles\angular-aria.js" />
     <Content Include="Scripts\test-bundles\angular-cookies.js" />
