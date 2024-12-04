@@ -20,7 +20,7 @@
                         <li><a href="@Url.Action("Homepage", "Home")">Home</a></li>
                         <li><a href="@Url.Action("FindBook","Home")">Find A Book</a></li>
                         <li><a href="@Url.Action("RequestBook","Home")">Request A Book</a></li>
-                        <li><a href="@Url.Action("LoginPage", "Home")">Login</a></li>
+                        <li><a href="@Url.Action("RegisterPage", "Home")">Register</a></li>
                     </ul>
                 </div>
             </nav>
@@ -50,7 +50,6 @@
 
                     <div class="signin-card">
                         <h2 class="signin-title">Sign In</h2>
-
                         <div class="input-field">
                             <i class="material-icons prefix" style="color: #ffffff;">account_box</i>
                             <input id="uEmail" type="email" class="validate" ng-required="true" ng-model="userEmail" required>
@@ -62,7 +61,7 @@
                             <input id="uPassword" type="password" class="validate" ng-required="true" ng-model="userPassword" required>
                             <label for="uPassword" style="color: #ffffff;">Password</label>
                         </div>
-                        <button type="button" class="waves-effect waves-light btn-small" ng-click="loginFunc()">Login</button>
+                        <a class="waves-effect waves-light btn-small" ng-click="loginFunc()">Login</a>
                     </div>
                 </div>
             </div>

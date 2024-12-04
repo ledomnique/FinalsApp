@@ -1,4 +1,8 @@
-﻿<body ng-app="FinalsApplication" ng-controller="FinalsController">
+﻿@{
+    Layout = "~/Views/Shared/_RequestBookLayout.cshtml";
+    ViewBag.Title = "Request a Book";
+}
+<body ng-app="FinalsApplication" ng-controller="FinalsController">
 
     <!--Navigation Bar-->
     <header class="header">
@@ -16,7 +20,7 @@
                         <li><a href="@Url.Action("Homepage", "Home")">Home</a></li>
                         <li><a href="@Url.Action("FindBook","Home")">Find A Book</a></li>
                         <li><a href="@Url.Action("RequestBook","Home")">Request A Book</a></li>
-                        <li><a href="@Url.Action("LoginPage", "Home")">Login</a></li>
+                        <li><a href="@Url.Action("RegisterPage", "Home")">Register</a></li>
                     </ul>
                 </div>
             </nav>
@@ -32,7 +36,43 @@
     </ul>
 
     <!--Form Content-->
-    
+
+    <main>
+        <section class="request">
+            <div class="row">
+                <h1 class="request-title">Let Us Bring the Next Chapter to You – Book Requests Made Easy!</h1>
+                <h3 class="request-low">
+                    If there is a book you would like to see in our collection, we
+                    would love to hear from you! Please fill out the form below, and we will review your request.
+                </h3>
+                <div class="request-container">
+                    <h2 class="bookinfo-title">Book Information</h2>
+                    <div class="input-field">
+                        <input id="bookTitle" type="text" class="validate" ng-required="true" ng-model="bookTitle" required>
+                        <label for="bookTitle" style="color: black;">Title</label>
+                    </div>
+                    <div class="input-field">
+                        <input id="bookAuthor" type="text" class="validate" ng-required="true" ng-model="bookAuthor" required>
+                        <label for="bookAuthor" style="color: black;">Author</label>
+                    </div>
+                    <div class="input-field">
+                        <input id="bookYear" type="number" class="validate" ng-required="true" ng-model="bookYear" required>
+                        <label for="bookYear" style="color: black;">Year Published</label>
+                    </div>
+                    <div class="input-field">
+                        <select id="genre" required>
+                            <option value="" disabled selected>Genre</option>
+                            <option value="horror">Horror</option>
+                            <option value="fantasy">Fantasy</option>
+                            <option value="truecrime">True Crime</option>
+                            <option value="selfhelp">Self-Help</option>
+                        </select>
+                    </div>
+                    <a class="waves-effect waves-light btn-small" ng-click="requestFunc()">Submit</a>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <!-- Footer -->
     <footer class="page-footer bg-white">
