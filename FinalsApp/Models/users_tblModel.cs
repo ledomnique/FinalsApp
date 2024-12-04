@@ -6,12 +6,15 @@ using System.Web;
 
 namespace FinalsApp.Models
 {
-    public class admin_tblModel
+    public class users_tblModel
     {
-        public int adminID { get; set; }
+        public int userID { get; set; }
+        public string firstName { get; set; }
+        public string lastName { get; set; }
+
         public string userName { get; set; }
         public string email { get; set; }
         public string password { get; set; }
-        public DateTime created_on { get; set; }
+        public DateTime joined_on { get; set; }
     }
 }

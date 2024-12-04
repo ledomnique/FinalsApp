@@ -1,0 +1,58 @@
+﻿@{
+    Layout = "~/Views/Shared/_AdminDashboardLayout.cshtml";
+}
+
+<body ng-app="FinalsApplication" ng-controller="FinalsController">
+    <!--Navigation Bar-->
+    <header class="header">
+        <div class="navbar-fixed">
+            <nav class="z-depth-4">
+                <div class="nav-wrapper">
+                    <a href="#" class="logo">
+                        <img src="~/Content/img/white-logo.png" class="logo-img" />
+                    </a>
+                    <!-- Sidenav Trigger (Hamburger Icon) -->
+                    <a href="#" data-target="mobile-demo" class="sidenav-trigger">
+                        <i class="material-icons">menu</i>
+                    </a>
+                    <ul class="right hide-on-med-and-down">
+                        <li><a href="@Url.Action("Homepage", "Home")">Home</a></li>
+                        <li><a href="@Url.Action("FindBook","Home")">Find A Book</a></li>
+                        <li><a href="@Url.Action("RequestBook","Home")">Request A Book</a></li>
+                        <li><a href="@Url.Action("LoginPage", "Home")">Login</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Sidenav for Mobile -->
+    <ul class="sidenav right-aligned" id="mobile-demo">
+        <li><a href="@Url.Action("Homepage", "Home")">Home</a></li>
+        <li><a href="@Url.Action("FindBook", "Home")">Find A Book</a></li>
+        <li><a href="@Url.Action("RequestBook","Home")">Request A Book</a></li>
+        <li><a href="@Url.Action("LoginPage", "Home")">Login</a></li>
+    </ul>
+
+    <!--DataTables for User Table Information-->
+    <table id="myTable" class="display">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>User Name</th>
+                <th>Joined On</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Row 1 Data 1</td>
+                <td>Row 1 Data 2</td>
+            </tr>
+            <tr>
+                <td>Row 2 Data 1</td>
+                <td>Row 2 Data 2</td>
+            </tr>
+        </tbody>
+    </table>
+</body>

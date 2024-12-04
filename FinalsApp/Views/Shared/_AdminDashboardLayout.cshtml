@@ -1,0 +1,205 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+    <link type="text/css" rel="stylesheet" href="~/Content/materialize.min.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <script src="~/Scripts/materialize.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href="~/Content/img/vecteezy_watercolor-painted-feather_11904796.png" rel="icon">
+
+    <!-- Materialize and SweetAlert -->
+    <script src="~/Scripts/materialize.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.css" />
+    <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
+
+    <style>
+        /* Root components */
+        :root {
+            /*Navbar color elements*/
+            --nav-color: #49111C;
+            --nav-hover-color: #a9927d;
+            --nav-text-color: #F2F4F3;
+        }
+
+        :root {
+            /*Main color elements*/
+            --hero-title-color: #F2F4F3;
+            --hero-subs-color: #F2F4F3;
+            --hero-btn-color: #53503f;
+        }
+
+        :root {
+            --footer-text-color: black;
+            --footer-line-color: #49111C;
+        }
+
+        /* Fonts */
+        @@font-face {
+            font-family: 'DellaRespira-Regular';
+            src: url(/Content/fonts/DellaRespira-Regular.ttf)
+        }
+
+        @@font-face {
+            font-family: 'Montserrat-Regular';
+            src: url(/Content/fonts/Montserrat-Regular.ttf)
+        }
+
+        @@font-face {
+            font-family: 'Montserrat-Medium';
+            src: url(/Content/fonts/Montserrat-Medium.ttf)
+        }
+
+        @@font-face {
+            font-family: 'Montserrat-MediumItalic';
+            src: url(/Content/fonts/Montserrat-MediumItalic.ttf)
+        }
+
+        @@font-face {
+            font-family: 'Montserrat-Bold';
+            src: url(/Content/fonts/Montserrat-Bold.ttf)
+        }
+
+        @@font-face {
+            font-family: 'NTR-Regular';
+            src: url(/Content/fonts/NTR-Regular.ttf)
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Header */
+
+        nav {
+            background: linear-gradient(90deg, #0A0908, #49111C);
+            height: 90px; /* Adjust to fit the logo perfectly */
+            display: flex;
+            align-items: center; /* Vertically align items */
+            padding: 0 20px; /* Add horizontal padding for better spacing */
+        }
+
+        /* Logo */
+        .logo {
+            display: flex;
+            align-items: center;
+            margin-right: auto; /* Push the logo to the left */
+            margin-left: 100px;
+        }
+
+        .logo-img {
+            height: 70px; /* Fixed height for logo */
+            width: auto; /* Maintain aspect ratio */
+        }
+
+        /*Nav Menu*/
+        .nav-wrapper {
+            display: flex;
+            flex-grow: 1;
+            padding: 0;
+            justify-content: flex-end;
+        }
+
+        .nav-wrapper ul {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center; /* Align items vertically */
+            list-style: none;
+            font-family: Montserrat-Medium;
+        }
+
+        .nav-wrapper ul li {
+            margin-right: 50px; /* Add spacing between nav items */
+        }
+
+        .nav-wrapper ul li a {
+            font-size: 15px;
+            color: var(--nav-text-color);
+            padding: 0 5px; /* Space between links */
+            text-decoration: none;
+        }
+
+        .nav-wrapper ul li a:hover {
+            color: var(--nav-hover-color);
+            background-color: transparent;
+        }
+
+        .nav-wrapper ul li:active a {
+            color: #A9927D;
+        }
+
+        /*Sidenav - responsive menu*/
+        i {
+            margin-top: 10px;
+            margin-right: 50px;
+        }
+
+        .sidenav {
+            background-color: antiquewhite;
+        }
+
+        .sidenav li {
+            margin-top: 20px;
+        }
+
+        .sidenav li a {
+            font-weight: 500;
+            font-size: 15px;
+        }
+
+        .sidenav li a:hover {
+            color: #49111C;
+            background-color: #a9927d;
+        }
+
+        /*Custom Scrollbar*/
+        /* width */
+        ::-webkit-scrollbar {
+            width: 15px;
+        }
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: #49111C;
+        }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    </style>
+
+</head>
+<body ng-app="FinalsApplication" ng-controller="FinalsController">
+    <div>
+        @RenderBody()
+    </div>
+
+    <script src="~/Scripts/jquery-3.7.1.min.js"></script>
+    <script src="~/Scripts/angular.js"></script>
+    <script src="~/Scripts/AngularScripts/Module.js"></script>
+    <script src="~/Scripts/AngularScripts/Controller.js"></script>
+    <script src="~/Scripts/AngularScripts/Service.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Initialize Sidenav
+            const elems = document.querySelectorAll('.sidenav');
+            M.Sidenav.init(elems, { edge: 'right' });
+        });
+    </script>
+</body>
+</html>

@@ -20,13 +20,17 @@ namespace FinalsApp.Models
 
         }
 
-        public virtual DbSet<admin_tblMap> admin_tbl { get; set; }
+        public virtual DbSet<users_tblModel> users_tbl { get; set; }
+        public virtual DbSet<books_tblModel> books_tbl { get; set; }
+        public virtual DbSet<genres_tblModel> genres_tbl { get; set; }
+
+
         //if multiple tables in database, multiple virtual DbSet(s)
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Configurations.Add(new admin_tblMap());
+            modelBuilder.Configurations.Add(new users_tblMap());
         }
     }
 }

@@ -57,12 +57,28 @@ namespace FinalsApp.Controllers
             return View();
         }
 
+        public ActionResult AdminDashboard()
+        {
+            return View();
+        }
+
         public void AddData(RegistrationModel registrationData)
         {
             using (var db = new inkling_dbContext())
             {
                 //inserting
 
+            }
+        }
+
+        public JsonResult LoadUsersData()
+        {
+            using (var db = new inkling_dbContext())
+            {
+                var userData = (from bData in db.books_tbl
+                                join gdata in db.genres_tbl on bData.genreID equals gdata.genreID
+                                select new { bData, gdata }).ToList();
+                return Json(userData, JsonRequestBehavior.AllowGet);
             }
         }
     }
