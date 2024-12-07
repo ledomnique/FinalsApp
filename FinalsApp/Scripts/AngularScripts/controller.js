@@ -11,6 +11,18 @@
         sessionStorage.setItem('userCredentials', JSON.stringify(userCredentials));
     }
 
+
+
+    $scope.loadUsers = function () {
+        var getData = RegistrationApplicationService.loadUsersData();
+        getData.then(function (ReturnedData) {
+            $scope.usersData = ReturnedData.data;
+            $(document).ready(function () {
+                $('#myTable').DataTable();
+            });
+        })
+    }
+
     $scope.submitFunc = function () {
         var userCredentials = getUserCredentials(); // existing credentials
 

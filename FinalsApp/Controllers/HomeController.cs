@@ -71,7 +71,7 @@ namespace FinalsApp.Controllers
             }
         }
 
-        public JsonResult LoadUsersData()
+        public JsonResult LoadBookInfo()
         {
             using (var db = new inkling_dbContext())
             {
@@ -81,6 +81,17 @@ namespace FinalsApp.Controllers
                 return Json(userData, JsonRequestBehavior.AllowGet);
             }
         }
+        public JsonResult LoadUsersData()
+        {
+            using (var db = new inkling_dbContext())
+            {
+                var empData = (from eData in db.users_tbl
+                               select new { eData }).ToList();
+                return Json(empData, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+
     }
 }
 
