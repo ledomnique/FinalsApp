@@ -1,4 +1,4 @@
-﻿app.controller("FinalsController", function ($scope, FinalsService) {
+﻿app.controller("FinalsController", function ($scope, FinalsAppService) {
 
     // User Credentials
     function getUserCredentials() {
@@ -9,18 +9,6 @@
     // Save user credentials to session storage
     function saveUserCredentials(userCredentials) {
         sessionStorage.setItem('userCredentials', JSON.stringify(userCredentials));
-    }
-
-
-
-    $scope.loadUsers = function () {
-        var getData = RegistrationApplicationService.loadUsersData();
-        getData.then(function (ReturnedData) {
-            $scope.usersData = ReturnedData.data;
-            $(document).ready(function () {
-                $('#myTable').DataTable();
-            });
-        })
     }
 
     $scope.submitFunc = function () {
@@ -99,7 +87,7 @@
             Swal.fire({
                 title: "Welcome!",
                 text: "Click OK to enter Inkling.",
-                icon: "success",,
+                icon: "success",
             }).then(() => {
                 $scope.cleanFunc();
                 $scope.$apply(function () {
@@ -138,4 +126,57 @@
         $scope.userAddress = null;
         $scope.userPhone = null;
     }
+
+    // Load User Data in Admin Dashboard
+
+
+
+  /*
+    getData.then(function (ReturnedData) {
+        $scope.usersData = ReturnedData.data;
+           setTimeout(() => {
+               if ($.fn.DataTable.isDataTable('#users_tbl')) {
+                   $('#users_tbl').DataTable().destroy();
+               }
+               $('#users_tbl').DataTable();
+           }, 0);
+        }, function (error) {
+            console.error("Error loading user data:", error);
+        });
+    
+
+   
+
+    var DataTable = require('datatables.net');
+    require('datatables.net-responsive');
+
+    $(document).ready(function () {
+        $('#users_tbl').DataTable();
+    });
+*/
+  
+    $scope.loadUsers = function () {
+        var getData = FinalsAppService.loadUsersData();
+        getData.then(function (ReturnedData) {
+            console.log("Loaded Data: ", ReturnedData.data); // Debugging
+            $scope.usersData = ReturnedData.data;
+
+            // Reinitialize DataTable
+            $timeout(function () {
+                if ($.fn.DataTable.isDataTable('#users_tbl')) {
+                    $('#users_tbl').DataTable().destroy();
+                }
+                $('#users_tbl').DataTable();
+            }, 0);
+
+        }).catch(function (error) {
+            console.error("Error loading users:", error);
+        });
+    };
+
+    // Call the function to load users
+    $scope.loadUsers();
+
+    
 });
+

@@ -3,21 +3,16 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
 
     <link type="text/css" rel="stylesheet" href="~/Content/materialize.min.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-    <script src="~/Scripts/materialize.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link href="~/Content/img/vecteezy_watercolor-painted-feather_11904796.png" rel="icon">
 
-    <!-- Materialize and SweetAlert -->
-    <script src="~/Scripts/materialize.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- DataTables -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/2.1.8/css/dataTables.bootstrap5.css" rel="stylesheet" />
 
-    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.css" />
-    <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
+    <title>@ViewBag.Title</title>
 
     <style>
         /* Root components */
@@ -146,19 +141,19 @@
             background-color: white;
         }
 
-        .sidenav li {
-            margin-top: 20px;
-        }
+            .sidenav li {
+                margin-top: 20px;
+            }
 
-        .sidenav li a {
-            font-weight: 500;
-            font-size: 15px;
-        }
+                .sidenav li a {
+                    font-weight: 500;
+                    font-size: 15px;
+                }
 
-        .sidenav li a:hover {
-            color: #49111C;
-            background-color: #a9927d;
-        }
+                    .sidenav li a:hover {
+                        color: #49111C;
+                        background-color: #a9927d;
+                    }
 
         /*Custom Scrollbar*/
         /* width */
@@ -176,10 +171,10 @@
             background: #49111C;
         }
 
-        /* Handle on hover */
-        ::-webkit-scrollbar-thumb:hover {
-            background: #555;
-        }
+            /* Handle on hover */
+            ::-webkit-scrollbar-thumb:hover {
+                background: #555;
+            }
     </style>
 
 </head>
@@ -191,14 +186,28 @@
     <script src="~/Scripts/jquery-3.7.1.min.js"></script>
     <script src="~/Scripts/angular.js"></script>
     <script src="~/Scripts/AngularScripts/Module.js"></script>
-    <script src="~/Scripts/AngularScripts/Controller.js"></script>
     <script src="~/Scripts/AngularScripts/Service.js"></script>
+    <script src="~/Scripts/AngularScripts/Controller.js"></script>
+
+    <script src="~/Scripts/materialize.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <!-- data tables -->
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
+    <script src="https://cdn.datatables.net/2.1.8/js/dataTables.bootstrap5.js"></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             // Initialize Sidenav
             const elems = document.querySelectorAll('.sidenav');
             M.Sidenav.init(elems, { edge: 'right' });
+        });
+
+        $(document).ready(function () {
+            $('#users_tbl').DataTable();
         });
     </script>
 </body>

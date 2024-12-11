@@ -2,7 +2,7 @@
     Layout = "~/Views/Shared/_AdminDashboardLayout.cshtml";
 }
 
-<body ng-app="FinalsApplication" ng-controller="FinalsController">
+<body>
     <!--Navigation Bar-->
     <header class="header">
         <div class="navbar-fixed">
@@ -35,7 +35,8 @@
     </ul>
 
     <!--DataTables for User Table Information-->
-    <table id="myTable" class="display" >
+    <br style="margin-bottom: 30px;"/>
+    <table id="users_tbl" class="display" >
         <thead>
             <tr>
                 <th>First Name</th>
@@ -46,12 +47,12 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="empData in usersData">
-                <td>{{empData.FirstName}}</td>
-                <td>{{empData.LastName}}</td>
-                <td>{{empData.UserName}}</td>
-                <td>{{empData.Email}}</td>
-                <td>{{empData.JoinedOn}}</td>
+            <tr ng-repeat="usrData in usersData">
+                <td>{{usrData.firstName}}</td>
+                <td>{{usrData.lastName}}</td>
+                <td>{{usrData.userName}}</td>
+                <td>{{usrData.email}}</td>
+                <td>{{usrData.joined_on | date:'shortDate'}}</td>
             </tr>
         </tbody>
     </table>

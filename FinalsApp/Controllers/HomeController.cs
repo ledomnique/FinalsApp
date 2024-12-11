@@ -70,6 +70,25 @@ namespace FinalsApp.Controllers
 
             }
         }
+        [HttpPost]
+        public JsonResult loadUsersData()
+        {
+            using (var db = new inkling_dbContext())
+            {
+                var userData = db.users_tbl
+                    .Select(u => new
+                    {
+                        u.firstName,
+                        u.lastName,
+                        u.userName,
+                        u.email,
+                        u.joined_on
+                    })
+                    .ToList();
+                return Json(userData, JsonRequestBehavior.AllowGet);
+            }
+        }
+
 
         public JsonResult LoadBookInfo()
         {
@@ -79,15 +98,6 @@ namespace FinalsApp.Controllers
                                 join gdata in db.genres_tbl on bData.genreID equals gdata.genreID
                                 select new { bData, gdata }).ToList();
                 return Json(userData, JsonRequestBehavior.AllowGet);
-            }
-        }
-        public JsonResult LoadUsersData()
-        {
-            using (var db = new inkling_dbContext())
-            {
-                var empData = (from eData in db.users_tbl
-                               select new { eData }).ToList();
-                return Json(empData, JsonRequestBehavior.AllowGet);
             }
         }
 

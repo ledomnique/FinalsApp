@@ -1,10 +1,12 @@
 ﻿app.service("FinalsAppService", function ($http) {
 
-    this.loadUsersData = function (getData) {
+    this.loadUsersData = function (ReturnedData) {
         return $http({
-            method: "POST",
-            url: "/Home/LoadUsersData",
-            data: getData
+            method: "GET", // Use GET instead of POST
+            url: "/Home/loadUsersData",
+            data: ReturnedData
         });
-    }
+    };
+
+    
 });
