@@ -2,7 +2,7 @@
     Layout = "~/Views/Shared/_AdminDashboardLayout.cshtml";
 }
 
-<body>
+<body ng-init="loadUsersData()" ng-controller="FinalsController">
     <!--Navigation Bar-->
     <header class="header">
         <div class="navbar-fixed">
@@ -20,6 +20,7 @@
                         <li><a href="@Url.Action("FindBook","Home")">Find A Book</a></li>
                         <li><a href="@Url.Action("RequestBook","Home")">Request A Book</a></li>
                         <li><a href="@Url.Action("LoginPage", "Home")">Login</a></li>
+                        <li><a href="@Url.Action("Admin", "Home")">ADMIN PAGE</a></li>
                     </ul>
                 </div>
             </nav>
@@ -35,8 +36,8 @@
     </ul>
 
     <!--DataTables for User Table Information-->
-    <br style="margin-bottom: 30px;"/>
-    <table id="users_tbl" class="display" >
+    <br style="margin-bottom: 30px;" />
+    <table id="users_tbl" class="display">
         <thead>
             <tr>
                 <th>First Name</th>
@@ -47,13 +48,32 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="usrData in usersData">
-                <td>{{usrData.firstName}}</td>
-                <td>{{usrData.lastName}}</td>
-                <td>{{usrData.userName}}</td>
-                <td>{{usrData.email}}</td>
-                <td>{{usrData.joined_on | date:'shortDate'}}</td>
+            <tr ng-repeat="user in usersData">
+                <td>{{user.firstName}}</td>
+                <td>{{user.lastName}}</td>
+                <td>{{user.userName}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.joined_on | date:'shortDate'}}</td>
             </tr>
         </tbody>
     </table>
+
+    <h3>Admin Users Table</h3>
+    <table id="users_tbl" class="display">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="user in adminData">
+                <td>{{user.userName}}</td>
+                <td>{{user.email}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+
 </body>

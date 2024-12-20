@@ -1,6 +1,11 @@
 ﻿using FinalsApp.Models;
+using MySql.Data.MySqlClient;
+using MySqlX.XDevAPI.Common;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -9,6 +14,10 @@ namespace FinalsApp.Controllers
 {
     public class HomeController : Controller
     {
+        public string MySQLConnectionString
+        {
+            get { return ConfigurationManager.ConnectionStrings["inkling_db"].ToString(); }
+        }
         public ActionResult Index()
         {
             return View();
@@ -62,44 +71,104 @@ namespace FinalsApp.Controllers
             return View();
         }
 
-        public void AddData(RegistrationModel registrationData)
-        {
-            using (var db = new inkling_dbContext())
-            {
-                //inserting
 
-            }
-        }
-        [HttpPost]
-        public JsonResult loadUsersData()
+        [HttpGet]
+        public ActionResult Admin()
         {
-            using (var db = new inkling_dbContext())
-            {
-                var userData = db.users_tbl
-                    .Select(u => new
-                    {
-                        u.firstName,
-                        u.lastName,
-                        u.userName,
-                        u.email,
-                        u.joined_on
-                    })
-                    .ToList();
-                return Json(userData, JsonRequestBehavior.AllowGet);
-            }
-        }
 
 
-        public JsonResult LoadBookInfo()
-        {
-            using (var db = new inkling_dbContext())
-            {
-                var userData = (from bData in db.books_tbl
-                                join gdata in db.genres_tbl on bData.genreID equals gdata.genreID
-                                select new { bData, gdata }).ToList();
-                return Json(userData, JsonRequestBehavior.AllowGet);
-            }
+            ViewBag.Message = "Your application description page.";
+
+            //ViewBag.adminData = table;
+
+
+
+
+
+
+            return View();
         }
+
+        public class UserEntity
+        {
+            public int userID { get; set; }
+            public string firstName { get; set; }
+            public string lastName { get; set; }
+            public string userName { get; set; }
+            public string email { get; set; }
+            public string password { get; set; }
+            public DateTime joined_on { get; set; }
+
+        }
+        [HttpGet]
+        public string GetUsers()
+        {
+            string result = string.Empty;
+            //MySqlConnection conn = new MySqlConnection("Server=localhost;Port=3306;Database=inkling_db;Uid=root;");
+            MySqlConnection conn = new MySqlConnection(MySQLConnectionString);
+            if (conn.State == ConnectionState.Closed)
+            {
+                conn.Open();
+            }
+            MySqlCommand cmd = new MySqlCommand("SELECT * FROM users_tbl", conn);
+            DataTable table = new DataTable();
+            table.Load(cmd.ExecuteReader());
+            JsonSerializerSettings settings = new JsonSerializerSettings();
+            settings.Converters.Add(new CustomDataSetConverter());
+            settings.Formatting = Formatting.Indented;
+            settings.MaxDepth = Int32.MaxValue;
+            string jsonObject = JsonConvert.SerializeObject(table, settings);
+            result = jsonObject;
+            return result;
+        }
+
+        public class AdminEntity
+        {
+            public int AdminId { get; set; }
+            public string userName { get; set; }
+            public string email { get; set; }
+            public string password { get; set; }
+            public DateTime created_on { get; set; }
+        }
+        [HttpGet]
+        public string GetAdmins()
+
+        {
+            string result = string.Empty;
+
+            //MySqlConnection conn = new MySqlConnection("Server=localhost;Port=3306;Database=inkling_db;Uid=root;");
+            MySqlConnection conn = new MySqlConnection(MySQLConnectionString);
+            if (conn.State == ConnectionState.Closed)
+            {
+                conn.Open();
+            }
+
+            MySqlCommand cmd = new MySqlCommand("SELECT * FROM admin_tbl", conn);
+
+            DataTable table = new DataTable();
+            table.Load(cmd.ExecuteReader());
+
+            JsonSerializerSettings settings = new JsonSerializerSettings();
+            settings.Converters.Add(new CustomDataSetConverter());
+            settings.Formatting = Formatting.Indented;
+            settings.MaxDepth = Int32.MaxValue;
+
+            string jsonObject = JsonConvert.SerializeObject(table, settings);
+
+            result = jsonObject;
+
+            return result;
+
+
+        }
+
+ 
+
+
+
+
+
+
 
 
     }

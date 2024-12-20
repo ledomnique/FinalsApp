@@ -1,5 +1,7 @@
 ﻿app.controller("FinalsController", function ($scope, FinalsAppService) {
 
+    alert('start controller');
+
     // User Credentials
     function getUserCredentials() {
         const credentials = sessionStorage.getItem('userCredentials');
@@ -127,40 +129,33 @@
         $scope.userPhone = null;
     }
 
-    // Load User Data in Admin Dashboard
     $scope.loadUsersData = function () {
-        var getUsers = FinalsAppService.loadUsersData();
-
-    getData.then(function (ReturnedData) {
-        $scope.usersData = ReturnedData.data;
-    
-    $(document).ready(function () {
-        $('#users_tbl').DataTable();
-    });
-*/
-  
-    $scope.loadUsers = function () {
-        var getData = FinalsAppService.loadUsersData();
-        getData.then(function (ReturnedData) {
-            console.log("Loaded Data: ", ReturnedData.data); // Debugging
-            $scope.usersData = ReturnedData.data;
-
-            // Reinitialize DataTable
+        FinalsAppService.loadUsersData().then(function (response) {
+            console.log("Loaded Data: ", response.data); // Debugging
+            $scope.userData = response.data;
+            // If using a table (e.g., DataTables)
             $timeout(function () {
-                if ($.fn.DataTable.isDataTable('#users_tbl')) {
-                    $('#users_tbl').DataTable().destroy();
-                }
                 $('#users_tbl').DataTable();
             }, 0);
-
-        }).catch(function (error) {
-            console.error("Error loading users:", error);
+        }, function (error) {
+            console.error("Error loading user data: ", error);
         });
-    };
+    }
 
-    // Call the function to load users
-    $scope.loadUsers();
+    $scope.loadAdminData = function () {
+        FinalsAppService.loadAdminsData().then(function (response) {
+            console.log("Loaded Data: ", response.data); // Debugging
+            $scope.adminData = response.data;
 
-    
+            // If using a table (e.g., DataTables)
+            $timeout(function () {
+                $('#users_tbl').DataTable();
+            }, 0);
+        }, function (error) {
+            console.error("Error loading user data: ", error);
+        });
+    }
+
+    $scope.loadAdminData();
 });
 
