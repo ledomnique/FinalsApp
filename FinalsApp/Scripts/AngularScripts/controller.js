@@ -128,28 +128,12 @@
     }
 
     // Load User Data in Admin Dashboard
+    $scope.loadUsersData = function () {
+        var getUsers = FinalsAppService.loadUsersData();
 
-
-
-  /*
     getData.then(function (ReturnedData) {
         $scope.usersData = ReturnedData.data;
-           setTimeout(() => {
-               if ($.fn.DataTable.isDataTable('#users_tbl')) {
-                   $('#users_tbl').DataTable().destroy();
-               }
-               $('#users_tbl').DataTable();
-           }, 0);
-        }, function (error) {
-            console.error("Error loading user data:", error);
-        });
     
-
-   
-
-    var DataTable = require('datatables.net');
-    require('datatables.net-responsive');
-
     $(document).ready(function () {
         $('#users_tbl').DataTable();
     });
