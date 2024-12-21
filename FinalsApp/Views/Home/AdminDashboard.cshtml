@@ -16,11 +16,21 @@
                         <i class="material-icons">menu</i>
                     </a>
                     <ul class="right hide-on-med-and-down">
-                        <li><a href="@Url.Action("Homepage", "Home")">Home</a></li>
-                        <li><a href="@Url.Action("FindBook","Home")">Find A Book</a></li>
-                        <li><a href="@Url.Action("RequestBook","Home")">Request A Book</a></li>
-                        <li><a href="@Url.Action("LoginPage", "Home")">Login</a></li>
-                        <li><a href="@Url.Action("Admin", "Home")">ADMIN PAGE</a></li>
+                        <li>
+                            <a href="@Url.Action("Homepage", "Home")">Home</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("FindBook","Home")">Find A Book</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("RequestBook","Home")">Request A Book</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("LoginPage", "Home")">Login</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Admin", "Home")">ADMIN PAGE</a>
+                        </li>
                     </ul>
                 </div>
             </nav>
@@ -29,14 +39,24 @@
 
     <!-- Sidenav for Mobile -->
     <ul class="sidenav right-aligned" id="mobile-demo">
-        <li><a href="@Url.Action("Homepage", "Home")">Home</a></li>
-        <li><a href="@Url.Action("FindBook", "Home")">Find A Book</a></li>
-        <li><a href="@Url.Action("RequestBook","Home")">Request A Book</a></li>
-        <li><a href="@Url.Action("LoginPage", "Home")">Login</a></li>
+        <li>
+            <a href="@Url.Action("Homepage", "Home")">Home</a>
+        </li>
+        <li>
+            <a href="@Url.Action("FindBook", "Home")">Find A Book</a>
+        </li>
+        <li>
+            <a href="@Url.Action("RequestBook","Home")">Request A Book</a>
+        </li>
+        <li>
+            <a href="@Url.Action("LoginPage", "Home")">Login</a>
+        </li>
     </ul>
 
     <!--DataTables for User Table Information-->
     <br style="margin-bottom: 30px;" />
+
+    <button ng-click="saveUser()">Save User</button>
     <table id="users_tbl" class="display">
         <thead>
             <tr>
@@ -48,7 +68,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="user in usersData">
+            <tr ng-repeat="user in userData">
                 <td>{{user.firstName}}</td>
                 <td>{{user.lastName}}</td>
                 <td>{{user.userName}}</td>
@@ -58,22 +78,24 @@
         </tbody>
     </table>
 
-    <h3>Admin Users Table</h3>
-    <table id="users_tbl" class="display">
+    @*<h3>Admin Users Table</h3>
+    <table id="users_tbl1" class="display">
         <thead>
             <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                
+                <th>Admin ID</th>
+                <th>Email</th>
+                <th>Created On</th>
+
             </tr>
         </thead>
         <tbody>
             <tr ng-repeat="user in adminData">
                 <td>{{user.userName}}</td>
                 <td>{{user.email}}</td>
+                <td>{{user.created_on}}</td>
             </tr>
         </tbody>
-    </table>
+    </table>*@
 
 
 </body>

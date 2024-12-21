@@ -1,6 +1,4 @@
-﻿app.controller("FinalsController", function ($scope, FinalsAppService) {
-
-    alert('start controller');
+﻿app.controller("FinalsController", function ($timeout, $scope, FinalsAppService) {
 
     // User Credentials
     function getUserCredentials() {
@@ -133,9 +131,24 @@
         FinalsAppService.loadUsersData().then(function (response) {
             console.log("Loaded Data: ", response.data); // Debugging
             $scope.userData = response.data;
-            // If using a table (e.g., DataTables)
+
+            angular.element(document).ready(function () {
+                dTable = $('#users_tbl')
+                dTable.DataTable();
+            });
+
+
+
+
+            //let table = new DataTable('#users_tbl', {
+            //    // config options...
+            //});
+
+
+
+             //If using a table (e.g., DataTables)
             $timeout(function () {
-                $('#users_tbl').DataTable();
+            $('#users_tbl').DataTable();
             }, 0);
         }, function (error) {
             console.error("Error loading user data: ", error);
@@ -148,14 +161,21 @@
             $scope.adminData = response.data;
 
             // If using a table (e.g., DataTables)
-            $timeout(function () {
-                $('#users_tbl').DataTable();
-            }, 0);
+            //$timeout(function () {
+            //    $('#users_tbl').DataTable();
+            //}, 0);
         }, function (error) {
             console.error("Error loading user data: ", error);
         });
     }
 
     $scope.loadAdminData();
+
+    $scope.loadUsersData();
+
+    $scope.saveUser = function () {
+
+        FinalsAppService.saveUser();
+    }
 });
 

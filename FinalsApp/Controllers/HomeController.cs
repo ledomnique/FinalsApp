@@ -1,4 +1,5 @@
 ﻿using FinalsApp.Models;
+using Microsoft.AspNetCore.Mvc;
 using MySql.Data.MySqlClient;
 using MySqlX.XDevAPI.Common;
 using Newtonsoft.Json;
@@ -6,9 +7,12 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using HttpGetAttribute = Microsoft.AspNetCore.Mvc.HttpGetAttribute;
+using HttpPostAttribute = Microsoft.AspNetCore.Mvc.HttpPostAttribute;
 
 namespace FinalsApp.Controllers
 {
@@ -18,62 +22,56 @@ namespace FinalsApp.Controllers
         {
             get { return ConfigurationManager.ConnectionStrings["inkling_db"].ToString(); }
         }
-        public ActionResult Index()
+
+        public System.Web.Mvc.ActionResult Homepage()
         {
             return View();
         }
 
-        public ActionResult About()
+        public System.Web.Mvc.ActionResult LoginPage()
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
-
-        public ActionResult Homepage()
+        public System.Web.Mvc.ActionResult FindBook()
         {
             return View();
         }
 
-        public ActionResult LoginPage()
-        {
-            return View();
-        }
-        public ActionResult FindBook()
+        public System.Web.Mvc.ActionResult UserLogin()
         {
             return View();
         }
 
-        public ActionResult UserLogin()
+        public System.Web.Mvc.ActionResult RequestBook()
         {
             return View();
         }
 
-        public ActionResult RequestBook()
+        public System.Web.Mvc.ActionResult RegisterPage()
         {
             return View();
         }
 
-        public ActionResult RegisterPage()
+        public System.Web.Mvc.ActionResult AdminDashboard()
         {
             return View();
         }
 
-        public ActionResult AdminDashboard()
+        public System.Web.Mvc.ActionResult AboutUs()
         {
             return View();
         }
-
+        public System.Web.Mvc.ActionResult Terms()
+        {
+            return View();
+        }
+        public System.Web.Mvc.ActionResult Contact()
+        {
+            return View();
+        }
 
         [HttpGet]
-        public ActionResult Admin()
+        public System.Web.Mvc.ActionResult Admin()
         {
 
 
@@ -124,7 +122,7 @@ namespace FinalsApp.Controllers
 
         public class AdminEntity
         {
-            public int AdminId { get; set; }
+            public int adminId { get; set; }
             public string userName { get; set; }
             public string email { get; set; }
             public string password { get; set; }
@@ -162,7 +160,44 @@ namespace FinalsApp.Controllers
 
         }
 
- 
+        [HttpPost]
+        public string saveUser([FromBody] users_tblModel e)
+        {
+            using (MySqlConnection conn = new MySqlConnection(MySQLConnectionString))
+            {
+                try
+                {
+                    if (conn.State == ConnectionState.Closed)
+                    {
+                        conn.Open();
+                    }
+
+                    var sqlStatement = string.Format("INSERT INTO users_tbl (firstName, lastName, userName, email, PASSWORD) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}')", e.firstName, e.lastName, e.userName, e.email, e.password);
+                    // Add if condition, if e.userId is = 0, Insert (because user is not yet existing), > 0 is Update
+                    MySqlCommand command = new MySqlCommand(sqlStatement, conn);
+                    command.CommandType = CommandType.Text;
+                    command.ExecuteNonQuery();
+
+                    if (e.userID > 0)
+                        return "Record has been successfully updated.";
+                    else
+                        return "Record has been successfully created.";
+                }
+                catch (Exception ex)
+                {
+                    return ex.Message;
+                }
+                finally
+                {
+                    if (conn.State == ConnectionState.Open)
+                    {
+                        conn.Close();
+                    }
+                }
+            }
+        }
+
+
 
 
 

@@ -3,18 +3,16 @@
 <html lang="en">
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
-    
+
     <link type="text/css" rel="stylesheet" href="~/Content/materialize.min.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-    <script src="~/Scripts/materialize.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link href="~/Content/img/vecteezy_watercolor-painted-feather_11904796.png" rel="icon">
 
     <!-- Materialize and SweetAlert -->
     <script src="~/Scripts/materialize.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <link href="~/Content/img/vecteezy_watercolor-painted-feather_11904796.png" rel="icon">
+    <title>@ViewBag.Title</title>
 
     <style>
         /*Roots - Navbar*/
@@ -104,34 +102,34 @@
             justify-content: flex-end;
         }
 
-        .nav-wrapper ul {
-            margin: 0;
-            padding: 0;
-            display: flex;
-            align-items: center; /* Align items vertically */
-            list-style: none;
-            font-family: Montserrat-Medium;
-        }
+            .nav-wrapper ul {
+                margin: 0;
+                padding: 0;
+                display: flex;
+                align-items: center; /* Align items vertically */
+                list-style: none;
+                font-family: Montserrat-Medium;
+            }
 
-        .nav-wrapper ul li {
-            margin-right: 50px; /* Add spacing between nav items */
-        }
+                .nav-wrapper ul li {
+                    margin-right: 50px; /* Add spacing between nav items */
+                }
 
-        .nav-wrapper ul li a {
-            font-size: 15px;
-            color: var(--nav-text-color);
-            padding: 0 5px; /* Space between links */
-            text-decoration: none;
-        }
+                    .nav-wrapper ul li a {
+                        font-size: 15px;
+                        color: var(--nav-text-color);
+                        padding: 0 5px; /* Space between links */
+                        text-decoration: none;
+                    }
 
-        .nav-wrapper ul li a:hover {
-            color: var(--nav-hover-color);
-            background-color: transparent;
-        }
+                        .nav-wrapper ul li a:hover {
+                            color: var(--nav-hover-color);
+                            background-color: transparent;
+                        }
 
-        .nav-wrapper ul li:active a {
-            color: #A9927D;
-        }
+                    .nav-wrapper ul li:active a {
+                        color: #A9927D;
+                    }
 
         /*Main Content*/
         .hero {
@@ -143,39 +141,38 @@
             overflow: hidden; /* Ensures no overflow from the image */
         }
 
-        .hero img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* Ensures the image covers the section */
-            z-index: 1; /* Places the image behind the content */
-        }
+            .hero img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover; /* Ensures the image covers the section */
+                z-index: 1; /* Places the image behind the content */
+            }
 
-        .hero .container {
-            position: relative;
-            z-index: 3;
-            text-align: center;
-            font-family: DellaRespira-Regular;
-            color: var(--hero-title-color);
-        }
+            .hero .container {
+                position: relative;
+                z-index: 3;
+                text-align: center;
+                font-family: DellaRespira-Regular;
+                color: var(--hero-title-color);
+            }
 
-        .hero h1 {
-            margin: 0;
-            font-size: 100px;
-            font-weight: 700;
-        }
+            .hero h1 {
+                margin: 0;
+                font-size: 100px;
+                font-weight: 700;
+            }
 
-        .hero p {
-            margin: 10px 0 0 0;
-            font-size: 24px;
-            color: var(--hero-subs-color);
-        }
+            .hero p {
+                margin: 10px 0 0 0;
+                font-size: 24px;
+                color: var(--hero-subs-color);
+            }
 
         .started {
             margin-top: 30px;
-
             background-color: #fff;
             border: 0 solid #e2e8f0;
             border-radius: 1.5rem;
@@ -197,15 +194,15 @@
             touch-action: manipulation;
         }
 
-        .started:hover {
-            background-color: #53503f;
-            color: #53503f;
-        }
+            .started:hover {
+                background-color: #53503f;
+                color: #53503f;
+            }
 
-        .started:after {
-            background-color: #F2F4F3;
-            color: black;
-        }
+            .started:after {
+                background-color: #F2F4F3;
+                color: black;
+            }
 
         /* Footer Styling */
         footer {
@@ -247,24 +244,24 @@
             margin-right: 80px;
         }
 
-        .footer-links ul {
-            padding: 0;
-            list-style: none;
-            display: flex;
-            flex-direction: column; /* Stack items vertically */
-            gap: 10px; /* Add space between the links */
-        }
+            .footer-links ul {
+                padding: 0;
+                list-style: none;
+                display: flex;
+                flex-direction: column; /* Stack items vertically */
+                gap: 10px; /* Add space between the links */
+            }
 
-        .footer-links ul li a {
-            color: #333; /* Link color */
-            text-decoration: none; /* Remove underline */
-            font-size: 14px; /* Adjust font size */
-            font-weight: 300;
-        }
+                .footer-links ul li a {
+                    color: #333; /* Link color */
+                    text-decoration: none; /* Remove underline */
+                    font-size: 14px; /* Adjust font size */
+                    font-weight: 300;
+                }
 
-        .footer-links ul li a:hover {
-            color: #800020; /* Highlight color */
-        }
+                    .footer-links ul li a:hover {
+                        color: #800020; /* Highlight color */
+                    }
 
         /*Copyright*/
         .copyright {
@@ -275,10 +272,10 @@
             color: white; /* Ensures text is readable */
         }
 
-        .copyright p {
-            margin: 0 0 0 0;
-            padding: 0 0 0 0;
-        }
+            .copyright p {
+                margin: 0 0 0 0;
+                padding: 0 0 0 0;
+            }
 
         /*Sidenav - responsive menu*/
         i {
@@ -290,19 +287,19 @@
             background-color: white;
         }
 
-        .sidenav li {
-            margin-top: 20px;
-        }
+            .sidenav li {
+                margin-top: 20px;
+            }
 
-        .sidenav li a {
-            font-weight: 500;
-            font-size: 15px;
-        }
+                .sidenav li a {
+                    font-weight: 500;
+                    font-size: 15px;
+                }
 
-        .sidenav li a:hover {
-            color: #49111C;
-            background-color: #a9927d;
-        }
+                    .sidenav li a:hover {
+                        color: #49111C;
+                        background-color: #a9927d;
+                    }
 
         /*Custom Scrollbar*/
         /* width */
@@ -320,14 +317,14 @@
             background: #0A0908;
         }
 
-        /* Handle on hover */
-        ::-webkit-scrollbar-thumb:hover {
-            background: #555;
-        }
+            /* Handle on hover */
+            ::-webkit-scrollbar-thumb:hover {
+                background: #555;
+            }
     </style>
 </head>
 
-<body ng-app="app" ng-controller="FinalsController">
+<body ng-app="FinalsApplication" ng-controller="FinalsController">
     <div>
         @RenderBody()
     </div>
