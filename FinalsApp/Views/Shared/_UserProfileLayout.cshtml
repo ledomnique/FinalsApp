@@ -7,13 +7,255 @@
     <link type="text/css" rel="stylesheet" href="~/Content/materialize.min.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
+    <script src="~/Scripts/materialize.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href="~/Content/img/vecteezy_watercolor-painted-feather_11904796.png" rel="icon">
+
     <!-- Materialize and SweetAlert -->
     <script src="~/Scripts/materialize.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <link href="~/Content/img/vecteezy_watercolor-painted-feather_11904796.png" rel="icon">
-
     <title>@ViewBag.Title</title>
+
+    <style>
+        /*Roots - Navbar*/
+        :root {
+            /*Navbar color elements*/
+            --nav-color: #49111C;
+            --nav-hover-color: #a9927d;
+            --nav-text-color: #F2F4F3;
+        }
+
+        :root {
+            /*Main color elements*/
+            --hero-title-color: #F2F4F3;
+            --hero-subs-color: #F2F4F3;
+            --hero-btn-color: #53503f;
+        }
+
+        :root {
+            --footer-text-color: black;
+            --footer-line-color: #49111C;
+        }
+
+        /* Fonts */
+        @@font-face {
+            font-family: 'DellaRespira-Regular';
+            src: url(/Content/fonts/DellaRespira-Regular.ttf)
+        }
+
+        @@font-face {
+            font-family: 'Montserrat-Regular';
+            src: url(/Content/fonts/Montserrat-Regular.ttf)
+        }
+
+        @@font-face {
+            font-family: 'Montserrat-Medium';
+            src: url(/Content/fonts/Montserrat-Medium.ttf)
+        }
+
+        @@font-face {
+            font-family: 'Montserrat-MediumItalic';
+            src: url(/Content/fonts/Montserrat-MediumItalic.ttf)
+        }
+
+        @@font-face {
+            font-family: 'Montserrat-Bold';
+            src: url(/Content/fonts/Montserrat-Bold.ttf)
+        }
+
+        @@font-face {
+            font-family: 'NTR-Regular';
+            src: url(/Content/fonts/NTR-Regular.ttf)
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Header */
+
+        nav {
+            background: linear-gradient(90deg, #0A0908, #49111C);
+            height: 90px; /* Adjust to fit the logo perfectly */
+            display: flex;
+            align-items: center; /* Vertically align items */
+            padding: 0 20px; /* Add horizontal padding for better spacing */
+        }
+
+        /* Logo */
+        .logo {
+            display: flex;
+            align-items: center;
+            margin-right: auto; /* Push the logo to the left */
+            margin-left: 100px;
+        }
+
+        .logo-img {
+            height: 70px; /* Fixed height for logo */
+            width: auto; /* Maintain aspect ratio */
+        }
+
+        /*Nav Menu*/
+        .nav-wrapper {
+            display: flex;
+            flex-grow: 1;
+            padding: 0;
+            justify-content: flex-end;
+        }
+
+        .nav-wrapper ul {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center; /* Align items vertically */
+            list-style: none;
+            font-family: Montserrat-Medium;
+        }
+
+        .nav-wrapper ul li {
+            margin-right: 50px; /* Add spacing between nav items */
+        }
+
+        .nav-wrapper ul li a {
+            font-size: 15px;
+            color: var(--nav-text-color);
+            padding: 0 5px; /* Space between links */
+            text-decoration: none;
+        }
+
+        .nav-wrapper ul li a:hover {
+            color: var(--nav-hover-color);
+            background-color: transparent;
+        }
+
+        .nav-wrapper ul li:active a {
+            color: #A9927D;
+        }
+
+        /* Main Content */
+
+
+        /* Footer Styling */
+        footer {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            font-family: Montserrat-Medium;
+        }
+
+        .page-footer {
+            background-color: white;
+            margin-top: -10px;
+            margin-bottom: 10px;
+        }
+
+        .footer-container {
+            max-width: 100%; /* Prevent any child from overflowing */
+            margin: 0 auto; /* Center the container */
+            padding: 0 15px; /* Add some horizontal padding */
+            display: flex;
+            justify-content: space-between; /* Space out logo and links */
+            align-items: center; /* Vertically center items */
+            flex-wrap: wrap; /* Wrap items to the next line if needed */
+        }
+
+
+        .footer-logo {
+            flex: 0 0 auto; /* Prevents the logo from growing/shrinking */
+            margin-left: 80px;
+        }
+
+        .footer-img {
+            height: 90px; /* Adjust height as needed */
+            width: auto; /* Maintain aspect ratio */
+        }
+
+        .footer-links {
+            flex: 0 0 auto; /* Prevents the links from growing/shrinking */
+            margin-right: 80px;
+        }
+
+        .footer-links ul {
+            padding: 0;
+            list-style: none;
+            display: flex;
+            flex-direction: column; /* Stack items vertically */
+            gap: 10px; /* Add space between the links */
+        }
+
+        .footer-links ul li a {
+            color: #333; /* Link color */
+            text-decoration: none; /* Remove underline */
+            font-size: 14px; /* Adjust font size */
+            font-weight: 300;
+        }
+
+        .footer-links ul li a:hover {
+            color: #800020; /* Highlight color */
+        }
+
+        /*Copyright*/
+        .copyright {
+            margin: 0;
+            background-color: #808080;
+            text-align: center; /* Centers the text horizontally */
+            padding: 10px 0; /* Adds vertical spacing */
+            color: white; /* Ensures text is readable */
+        }
+
+        .copyright p {
+            margin: 0 0 0 0;
+            padding: 0 0 0 0;
+        }
+
+        /*Sidenav - responsive menu*/
+        i {
+            margin-top: 10px;
+            margin-right: 50px;
+        }
+
+        .sidenav {
+            background-color: white;
+        }
+
+        .sidenav li {
+            margin-top: 20px;
+        }
+
+        .sidenav li a {
+            font-weight: 500;
+            font-size: 15px;
+        }
+
+        .sidenav li a:hover {
+            color: #49111C;
+            background-color: #a9927d;
+        }
+
+        /*Custom Scrollbar*/
+        /* width */
+        ::-webkit-scrollbar {
+            width: 15px;
+        }
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: #0A0908;
+        }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    </style>
+    
 </head>
 <body ng-app="FinalsApplication" ng-controller="FinalsController">
     <div>

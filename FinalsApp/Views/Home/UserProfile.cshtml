@@ -2,4 +2,60 @@
     Layout = "~/Views/Shared/_UserProfileLayout.cshtml";
 }
 
+<body>
+    <!--Navigation Bar-->
+    <header class="header">
+        <div class="navbar-fixed">
+            <nav class="z-depth-4">
+                <div class="nav-wrapper">
+                    <a href="@Url.Action("Homepage", "Home")" class="logo">
+                        <img src="~/Content/img/white-logo.png" class="logo-img" />
+                    </a>
+                    <!-- Sidenav Trigger (Hamburger Icon) -->
+                    <a href="#" data-target="mobile-demo" class="sidenav-trigger">
+                        <i class="material-icons">menu</i>
+                    </a>
+                    <ul class="right hide-on-med-and-down">
+                        <li><a href="@Url.Action("Homepage", "Home")">Home</a></li>
+                        <li><a href="@Url.Action("FindBook","Home")">Find A Book</a></li>
+                        <li><a href="@Url.Action("RequestBook","Home")">Request A Book</a></li>
+                        <li><a href="@Url.Action("LoginPage", "Home")">Login</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
 
+    <!-- Sidenav for Mobile -->
+    <ul class="sidenav right-aligned" id="mobile-demo">
+        <li><a href="@Url.Action("Homepage", "Home")">Home</a></li>
+        <li><a href="@Url.Action("FindBook", "Home")">Find A Book</a></li>
+        <li><a href="@Url.Action("RequestBook","Home")">Request A Book</a></li>
+        <li><a href="@Url.Action("LoginPage", "Home")">Login</a></li>
+    </ul>
+
+    <!--Main Content-->
+
+
+    <!-- Footer -->
+    <footer class="page-footer bg-white">
+        <div class="footer-container d-flex align-items-center justify-content-between">
+            <!-- Logo Section -->
+            <div class="footer-logo">
+                <img src="~/Content/img/footer-logo.png" class="footer-img" alt="Footer Logo" />
+            </div>
+
+            <!-- Links Section -->
+            <div class="footer-links">
+                <ul class="list-inline mb-0">
+                    <li class="list-inline-item"><a href="@Url.Action("AboutUs", "Home")">About Us</a></li>
+                    <li class="list-inline-item"><a href="@Url.Action("Terms", "Home")">Terms & Conditions</a></li>
+                    <li class="list-inline-item"><a href="@Url.Action("Contact", "Home")">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright white-text">
+            <p>© <span>2024</span> <strong class="px-1 sitename">Inkling</strong> <span>All Rights Reserved</span></p>
+        </div>
+    </footer>
+</body>

@@ -26,9 +26,6 @@
                             <a href="@Url.Action("RequestBook","Home")">Request A Book</a>
                         </li>
                         <li>
-                            <a href="@Url.Action("LoginPage", "Home")">Login</a>
-                        </li>
-                        <li>
                             <a href="@Url.Action("Admin", "Home")">ADMIN PAGE</a>
                         </li>
                     </ul>
@@ -53,32 +50,64 @@
         </li>
     </ul>
 
+    
+
+
     <!--DataTables for User Table Information-->
     <br style="margin-bottom: 30px;" />
 
     <button ng-click="saveUser()">Save User</button>
-    <table id="users_tbl" class="display">
-        <thead>
-            <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>User Name</th>
-                <th>Email Address</th>
-                <th>Joined On</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="user in userData">
-                <td>{{user.firstName}}</td>
-                <td>{{user.lastName}}</td>
-                <td>{{user.userName}}</td>
-                <td>{{user.email}}</td>
-                <td>{{user.joined_on | date:'shortDate'}}</td>
-            </tr>
-        </tbody>
-    </table>
 
-    @*<h3>Admin Users Table</h3>
+    <section>
+        <!-- Left Sidenav -->
+        <aside class="col s3">
+            <ul class="collection with-header z-depth-1">
+                <li class="collection-header">
+                    <h5>Admin Menu</h5>
+                </li>
+                <li class="collection-item">
+                    <a href="#!">Dashboard</a>
+                </li>
+                <li class="collection-item">
+                    <a href="#!">Manage Users</a>
+                </li>
+                <li class="collection-item">
+                    <a href="#!">Manage Books</a>
+                </li>
+                <li class="collection-item">
+                    <a href="#!">Reports</a>
+                </li>
+                <li class="collection-item">
+                    <a href="#!">Settings</a>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Main Content Section -->
+        <table id="users_tbl" class="display">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>User Name</th>
+                    <th>Email Address</th>
+                    <th>Joined On</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="user in userData">
+                    <td>{{user.firstName}}</td>
+                    <td>{{user.lastName}}</td>
+                    <td>{{user.userName}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{user.joined_on | date:'shortDate'}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    
+
+    <h3>Admin Users Table</h3>
     <table id="users_tbl1" class="display">
         <thead>
             <tr>
@@ -95,7 +124,7 @@
                 <td>{{user.created_on}}</td>
             </tr>
         </tbody>
-    </table>*@
+    </table>
 
 
 </body>

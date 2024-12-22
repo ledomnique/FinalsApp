@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using MySql.Data.MySqlClient;
 using MySqlX.XDevAPI.Common;
 using Newtonsoft.Json;
+using Org.BouncyCastle.Crypto.Generators;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -194,6 +195,42 @@ namespace FinalsApp.Controllers
                         conn.Close();
                     }
                 }
+            }
+        }
+
+        // Login Function for User + Admin
+        [HttpPost]
+        public JsonResult LogData(LoginModel loginData)
+        {
+            using (var db = new inkling_dbContext())
+            {
+                //Find user by username or email
+                var existingUser = db.users_tbl
+                    .FirstOrDefault(u =>
+                        (u.userName.ToLower == loginData.usernameLogin.ToLower())
+                        );
+
+                if (existingUser != null)
+                {
+                    return Json(new { success = false, message = "User not found." });
+                }
+
+                //Check if password is correct
+                bool isPassword = BCrypt.Net.BCrypt.Verify(loginData.password, existingUser.password);
+                if (!isPassword)
+                {
+                    return Json(new { success = false, message = "Invalid password." });
+                }
+
+                //Login successful = save cookies
+                HttpCookie authCookie = new HttpCookie("UserSession");
+                authCookie.Value = existingUser.userID.ToString(); //Stores user ID/session token
+                authCookie.Expires = DateTime.Now.AddHours(1); //Cookie expires in 1 hour
+                Response.Cookies.Add(authCookie);
+
+                //Login successful
+                return Json(new { success = true, message = "Login successful." });
+
             }
         }
 

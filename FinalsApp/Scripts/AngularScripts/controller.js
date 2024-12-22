@@ -127,6 +127,10 @@
         $scope.userPhone = null;
     }
 
+    $scope.logData = function () {
+
+    }
+
     $scope.loadUsersData = function () {
         FinalsAppService.loadUsersData().then(function (response) {
             console.log("Loaded Data: ", response.data); // Debugging
