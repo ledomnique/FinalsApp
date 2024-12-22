@@ -207,7 +207,7 @@ namespace FinalsApp.Controllers
                 //Find user by username or email
                 var existingUser = db.users_tbl
                     .FirstOrDefault(u =>
-                        (u.userName.ToLower == loginData.userNameLogin.ToLower())
+                        (u.userName.ToLower() == loginData.userNameLogin.ToLower())
                         );
 
                 if (existingUser != null)
