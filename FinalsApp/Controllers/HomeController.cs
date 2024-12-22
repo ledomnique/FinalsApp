@@ -207,7 +207,7 @@ namespace FinalsApp.Controllers
                 //Find user by username or email
                 var existingUser = db.users_tbl
                     .FirstOrDefault(u =>
-                        (u.userName.ToLower == loginData.usernameLogin.ToLower())
+                        (u.userName.ToLower == loginData.userNameLogin.ToLower())
                         );
 
                 if (existingUser != null)
@@ -216,7 +216,7 @@ namespace FinalsApp.Controllers
                 }
 
                 //Check if password is correct
-                bool isPassword = BCrypt.Net.BCrypt.Verify(loginData.password, existingUser.password);
+                bool isPassword = BCrypt.Net.BCrypt.Verify(loginData.passwordLogin, existingUser.password);
                 if (!isPassword)
                 {
                     return Json(new { success = false, message = "Invalid password." });
