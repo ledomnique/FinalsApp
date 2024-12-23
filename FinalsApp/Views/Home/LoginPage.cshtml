@@ -52,21 +52,23 @@
                         <h2 class="signin-title">Sign In</h2>
                         <div class="input-field">
                             <i class="material-icons prefix" style="color: #ffffff;">account_box</i>
-                            <input id="uEmail" type="email" class="validate" ng-required="true" ng-model="userEmail" required>
+                            <input id="uEmail" type="email" class="validate" ng-model="credentials.userEmail" required>
                             <label for="uEmail" style="color: #ffffff;">Email</label>
                         </div>
 
                         <div class="input-field">
                             <i class="material-icons prefix" style="color: #ffffff;">lock</i>
-                            <input id="uPassword" type="password" class="validate" ng-required="true" ng-model="userPassword" required>
+                            <input id="uPassword" type="password" class="validate" ng-model="credentials.userPassword" required>
                             <label for="uPassword" style="color: #ffffff;">Password</label>
                         </div>
-                        <a class="waves-effect waves-light btn-small" ng-click="loginFunc()">Login</a>
+                        <a class="waves-effect waves-light btn-small" ng-click="login()">Login</a>
+                        <p class="error" ng-if="loginError" style="color: red;">{{loginError}}</p>
                     </div>
                 </div>
             </div>
         </section>
     </main>
+
 
     <!-- Footer -->
     <footer class="page-footer bg-white">

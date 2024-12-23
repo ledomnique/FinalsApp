@@ -12,15 +12,47 @@
         })
     }
 
+    //Login function that allows admin to access the dashboard (hardcoded credentials)
+    $scope.credentials = {
+        userEmail: "",
+        userPassword: ""
+    };
+
+    $scope.login = function () {
+        // Hardcoded admin credentials
+        const adminEmail = "dominique.nilo@gmail.com";
+        const adminPassword = "lewis320!";
+
+        // Check if any fields are empty
+        if (!$scope.credentials.userEmail || !$scope.credentials.userPassword) {
+            Swal.fire({
+                title: "Missing Fields",
+                text: "Ensure all fields are filled correctly before proceeding!",
+                icon: "warning",
+            });
+            return; // Stop execution if validation fails
+        }
+
+        // Check credentials
+        if ($scope.credentials.userEmail === adminEmail && $scope.credentials.userPassword === adminPassword) {
+            // Redirect to the admin dashboard
+            window.location.href = "/Home/Dashboard";
+        } else {
+            // Show an error message
+            $scope.loginError = "Invalid email or password.";
+            Swal.fire({
+                title: "Login Failed",
+                text: "Invalid email or password. Please try again.",
+                icon: "error",
+            });
+        }
+    };
+
+
     // User Credentials
     function getUserCredentials() {
         const credentials = sessionStorage.getItem('userCredentials');
         return credentials ? JSON.parse(credentials) : [];
-    }
-
-    // Save user credentials to session storage
-    function saveUserCredentials(userCredentials) {
-        sessionStorage.setItem('userCredentials', JSON.stringify(userCredentials));
     }
 
     $scope.submitFunc = function () {
@@ -78,6 +110,7 @@
         }
     }
 
+    /*
     $scope.loginFunc = function () {
         var userCredentials = getUserCredentials(); // get existing credentials
 
@@ -91,6 +124,7 @@
             return; // Stop execution if validation fails
         }
 
+        
         // Credentials check
         var userSearch = userCredentials.find(UFind => UFind.uEmail === $scope.userEmail && UFind.uPassword === $scope.userPassword);
 
@@ -116,6 +150,7 @@
             });
         }
     }
+    */
 
     $scope.cancelFunc = function () {
         // Clear all form fields
