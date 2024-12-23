@@ -62,6 +62,11 @@ namespace FinalsApp.Controllers
             return View();
         }
 
+        public ActionResult UserProfile()
+        {
+            return View();
+        }
+
         public void AddData(RegistrationModel registrationData)
         {
             using (var db = new inkling_dbContext())

@@ -1,0 +1,66 @@
+﻿@{
+    Layout = "~/Views/Shared/_UserProfileLayout.cshtml";
+}
+
+<body ng-app="FinalsApplication" ng-controller="FinalsController">
+    <!--Navigation Bar-->
+    <header class="header">
+        <div class="navbar-fixed">
+            <nav class="z-depth-4">
+                <div class="nav-wrapper">
+                    <a href="#" class="logo">
+                        <img src="~/Content/img/white-logo.png" class="logo-img" />
+                    </a>
+                    <!-- Sidenav Trigger (Hamburger Icon) -->
+                    <a href="#" data-target="mobile-demo" class="sidenav-trigger">
+                        <i class="material-icons">menu</i>
+                    </a>
+                    <ul class="right hide-on-med-and-down">
+                        <li><a href="@Url.Action("Homepage", "Home")">Home</a></li>
+                        <li><a href="@Url.Action("FindBook","Home")">Find A Book</a></li>
+                        <li><a href="@Url.Action("RequestBook","Home")">Request A Book</a></li>
+                        <li><a href="@Url.Action("LoginPage", "Home")">Login</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Sidenav for Mobile -->
+    <ul class="sidenav right-aligned" id="mobile-demo">
+        <li><a href="@Url.Action("Homepage", "Home")">Home</a></li>
+        <li><a href="@Url.Action("FindBook", "Home")">Find A Book</a></li>
+        <li><a href="@Url.Action("RequestBook","Home")">Request A Book</a></li>
+        <li><a href="@Url.Action("LoginPage", "Home")">Login</a></li>
+    </ul>
+
+    <main>
+        <section class="userprofile">
+            <div class="profile-container">
+                <div class="profile-header">
+                    <h1>Hi, [User!]</h1>
+                </div>
+                <div class="profile-details">
+                    <p><strong>Name:</strong> <span id="user-name">John Doe</span></p>
+                    <p><strong>Email:</strong> <span id="user-email">johndoe@example.com</span></p>
+                </div>
+                <button id="edit-password-btn" class="edit-password-btn">Edit Password</button>
+
+                <form id="update-password-form" class="update-password-form hidden">
+                    <h2>Update Password</h2>
+                    <label for="current-password">Current Password</label>
+                    <input type="password" id="current-password" placeholder="Enter current password" required>
+
+                    <label for="new-password">New Password</label>
+                    <input type="password" id="new-password" placeholder="Enter new password" required>
+
+                    <label for="confirm-password">Confirm Password</label>
+                    <input type="password" id="confirm-password" placeholder="Confirm new password" required>
+
+                    <button type="submit">Update Password</button>
+                </form>
+            </div>
+        </section>
+    </main>
+</body>
+
