@@ -7,6 +7,21 @@
         });
     };
 
+    this.deleteUser = function () {
+        return $http({
+            method: "DELETE",
+            url: "/Home/DeleteUser",
+            params: { id: userID }
+        });
+    }
+
+    this.loadBooksData = function () {
+        return $http({
+            method: "GET",
+            url: "/Home/GetBooks"
+        });
+    };
+
     this.loadAdminsData = function () {
         return $http({
             method: "GET",
@@ -19,10 +34,11 @@
 
         var data = {
             UserID: 0
-            , firstName: 'b'
-            , lastName: 'b'
-            , email: 'b'
-            , password: 'asd123'
+            , firstName: 'c'
+            , lastName: 'c'
+            , userName: 'c2'
+            , email: 'c@icloud.com'
+            , password: 'cne123'
         };
 
         $http.post(url, data, 'contenttype').then(function (response) {

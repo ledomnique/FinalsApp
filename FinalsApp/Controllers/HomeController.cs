@@ -12,6 +12,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using HttpDeleteAttribute = System.Web.Mvc.HttpDeleteAttribute;
 using HttpGetAttribute = Microsoft.AspNetCore.Mvc.HttpGetAttribute;
 using HttpPostAttribute = Microsoft.AspNetCore.Mvc.HttpPostAttribute;
 
@@ -52,8 +53,16 @@ namespace FinalsApp.Controllers
         {
             return View();
         }
+        public System.Web.Mvc.ActionResult Dashboard()
+        {
+            return View();
+        }
 
-        public System.Web.Mvc.ActionResult AdminDashboard()
+        public System.Web.Mvc.ActionResult ManageUsers()
+        {
+            return View();
+        }
+        public System.Web.Mvc.ActionResult ManageBooks()
         {
             return View();
         }
@@ -119,6 +128,46 @@ namespace FinalsApp.Controllers
             string jsonObject = JsonConvert.SerializeObject(table, settings);
             result = jsonObject;
             return result;
+        }
+
+        public class BookEntity
+        {
+            public int bookID { get; set; }
+            public string title { get; set; }
+            public string author { get; set; }
+            public int genreID { get; set; }
+            public DateTime published_on { get; set; }
+            public string description { get; set; }
+        }
+        [HttpGet]
+        public string GetBooks()
+        {
+            string result = string.Empty;
+
+            //MySqlConnection conn = new MySqlConnection("Server=localhost;Port=3306;Database=inkling_db;Uid=root;");
+            MySqlConnection conn = new MySqlConnection(MySQLConnectionString);
+            if (conn.State == ConnectionState.Closed)
+            {
+                conn.Open();
+            }
+
+            MySqlCommand cmd = new MySqlCommand("SELECT * FROM books_tbl", conn);
+
+            DataTable table = new DataTable();
+            table.Load(cmd.ExecuteReader());
+
+            JsonSerializerSettings settings = new JsonSerializerSettings();
+            settings.Converters.Add(new CustomDataSetConverter());
+            settings.Formatting = Formatting.Indented;
+            settings.MaxDepth = Int32.MaxValue;
+
+            string jsonObject = JsonConvert.SerializeObject(table, settings);
+
+            result = jsonObject;
+
+            return result;
+
+
         }
 
         public class AdminEntity
@@ -235,11 +284,70 @@ namespace FinalsApp.Controllers
         }
 
 
+        /*
+        [HttpPost]
+        public IActionResult ChangePassword([FromBody] ChangePasswordModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                // Validate old password and update new password logic here
+                bool isPasswordUpdated = PasswordService.UpdatePassword(User.Identity.Name, model.OldPassword, model.NewPassword);
+
+                if (isPasswordUpdated)
+                {
+                    return Ok(new { message = "Password changed successfully." });
+                }
+                else
+                {
+                    return BadRequest(new { message = "Invalid old password." });
+                }
+            }
+
+            return BadRequest(new { message = "Invalid request." });
+        }
+
+        public class ChangePasswordModel
+        {
+            public string OldPassword { get; set; }
+            public string NewPassword { get; set; }
+        }
+        */
 
 
+        [HttpDelete]
+        public JsonResult DeleteUser(int id)
+        {
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(MySQLConnectionString))
+                {
+                    if (conn.State == ConnectionState.Closed)
+                    {
+                        conn.Open();
+                    }
 
+                    string query = "DELETE FROM inkling_db.users_tbl WHERE userID = @userID";
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@userID", id);
 
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    conn.Close();
 
+                    if (rowsAffected > 0)
+                    {
+                        return Json(new { success = true });
+                    }
+                    else
+                    {
+                        return Json(new { success = false, message = "No rows affected." });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = ex.Message });
+            }
+        }
 
 
 

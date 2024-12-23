@@ -40,10 +40,6 @@
         <section class="request">
             <div class="row">
                 <h1 class="request-title">Let Us Bring the Next Chapter to You – Book Requests Made Easy!</h1>
-                <h3 class="request-low">
-                    If there is a book you would like to see in our collection, we
-                    would love to hear from you! Please fill out the form below, and we will review your request.
-                </h3>
                 <div class="request-container">
                     <h2 class="bookinfo-title">Book Information</h2>
                     <div class="input-field">
@@ -58,16 +54,7 @@
                         <input id="bookYear" type="number" class="validate" ng-required="true" ng-model="bookYear" required>
                         <label for="bookYear" style="color: black;">Year Published</label>
                     </div>
-                    <div class="input-field">
-                        <select id="genre" required>
-                            <option value="" disabled selected>Genre</option>
-                            <option value="horror">Horror</option>
-                            <option value="fantasy">Fantasy</option>
-                            <option value="truecrime">True Crime</option>
-                            <option value="selfhelp">Self-Help</option>
-                        </select>
-                    </div>
-                    <a class="waves-effect waves-light btn-small" ng-click="requestFunc()">Submit</a>
+                    <a class="waves-effect waves-light btn-small" ng-click="requestFunc()">Submit Request</a>
                 </div>
             </div>
         </section>
@@ -84,9 +71,9 @@
             <!-- Links Section -->
             <div class="footer-links">
                 <ul class="list-inline mb-0">
-                    <li class="list-inline-item"><a href="#">About Us</a></li>
-                    <li class="list-inline-item"><a href="#">Terms & Conditions</a></li>
-                    <li class="list-inline-item"><a href="#">Contact Us</a></li>
+                    <li class="list-inline-item"><a href="@Url.Action("AboutUs","Home")">About Us</a></li>
+                    <li class="list-inline-item"><a href="@Url.Action("Terms","Home")">Terms & Conditions</a></li>
+                    <li class="list-inline-item"><a href="@Url.Action("Contact","Home")">Contact Us</a></li>
                 </ul>
             </div>
         </div>

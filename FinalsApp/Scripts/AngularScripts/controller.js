@@ -1,5 +1,17 @@
 ﻿app.controller("FinalsController", function ($timeout, $scope, FinalsAppService) {
 
+    //Initialize Admin Dashboard
+    $scope.welcomeAdmin = function () {
+        Swal.fire({
+            title: 'Welcome, Admin!',
+            icon: 'success',
+            text: 'You can now access the Dashboard.',
+            confirmButtonText: 'Continue',
+            allowOutsideClick: false,
+            allowEscapeKey: false
+        })
+    }
+
     // User Credentials
     function getUserCredentials() {
         const credentials = sessionStorage.getItem('userCredentials');
@@ -159,6 +171,25 @@
         });
     }
 
+    $scope.loadBooksData = function () {
+        FinalsAppService.loadBooksData().then(function (response) {
+            console.log("Loaded Data: ", response.data); // Debugging
+            $scope.bookData = response.data;
+
+            angular.element(document).ready(function () {
+                dTable = $('#books_tbl')
+                dTable.DataTable();
+            });
+
+            $timeout(function () {
+                $('#users_tbl').DataTable();
+            }, 0);
+
+        }, function (error) {
+            console.error("Error loading user data: ", error);
+        });
+    }
+
     $scope.loadAdminData = function () {
         FinalsAppService.loadAdminsData().then(function (response) {
             console.log("Loaded Data: ", response.data); // Debugging
@@ -177,9 +208,82 @@
 
     $scope.loadUsersData();
 
+    $scope.loadBooksData();
+
+    $scope.deleteUser = function (userID, index) {
+        if (confirm("Are you sure you want to delete this user?")) {
+            FinalsAppService.deleteUser(userID).then(function (response) {
+                if (response.data.success) {
+                    // Remove the book from the scope (front-end)
+                    $scope.userData.splice(index, 1);
+                    console.log("User deleted successfully!");
+                } else {
+                    console.error("Failed to delete user.");
+                }
+            }, function (error) {
+                console.error("Error deleting user: ", error);
+            });
+        }
+    }
+
     $scope.saveUser = function () {
 
         FinalsAppService.saveUser();
     }
+
+    function openChangePasswordPopup() {
+        Swal.fire({
+            title: 'Change Password',
+            html: `
+            <div>
+                <label for="oldPassword">Old Password</label>
+                <input id="oldPassword" type="password" class="swal2-input" placeholder="Enter old password">
+            </div>
+            <div>
+                <label for="newPassword">New Password</label>
+                <input id="newPassword" type="password" class="swal2-input" placeholder="Enter new password">
+            </div>
+        `,
+            focusConfirm: false,
+            showCancelButton: true,
+            confirmButtonText: 'Submit',
+            preConfirm: () => {
+                const oldPassword = document.getElementById('oldPassword').value;
+                const newPassword = document.getElementById('newPassword').value;
+
+                if (!oldPassword || !newPassword) {
+                    Swal.showValidationMessage('Please fill out both fields.');
+                    return false;
+                }
+
+                return { oldPassword, newPassword };
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const { oldPassword, newPassword } = result.value;
+
+                // Send the passwords to your server for processing
+                // Example using fetch:
+                fetch('/Home/ChangePassword', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ oldPassword, newPassword })
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            Swal.fire('Success', 'Your password has been changed.', 'success');
+                        } else {
+                            Swal.fire('Error', 'Failed to change password.', 'error');
+                        }
+                    })
+                    .catch(() => {
+                        Swal.fire('Error', 'An error occurred. Please try again.', 'error');
+                    });
+            }
+        });
+    }
+
 });
 

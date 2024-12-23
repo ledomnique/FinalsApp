@@ -1144,7 +1144,7 @@
     <Content Include="Views\Shared\_RegisterPageLayout.cshtml" />
     <Content Include="Views\Home\RegisterPage.cshtml" />
     <Content Include="Views\Shared\_AdminDashboardLayout.cshtml" />
-    <Content Include="Views\Home\AdminDashboard.cshtml" />
+    <Content Include="Views\Home\ManageUsers.cshtml" />
     <Content Include="Views\Shared\_UserProfileLayout.cshtml" />
     <Content Include="Views\Shared\_SelectedBookLayout.cshtml" />
     <Content Include="Views\Home\SelectedBook.cshtml" />
@@ -1152,6 +1152,8 @@
     <Content Include="Views\Home\AboutUs.cshtml" />
     <Content Include="Views\Home\Terms.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\ManageBooks.cshtml" />
+    <Content Include="Views\Home\Dashboard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
