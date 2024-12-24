@@ -36,7 +36,6 @@
             UserID: 0
             , firstName: 'c'
             , lastName: 'c'
-            , userName: 'c2'
             , email: 'c@icloud.com'
             , password: 'cne123'
         };

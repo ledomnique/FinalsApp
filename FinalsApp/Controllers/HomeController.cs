@@ -102,7 +102,6 @@ namespace FinalsApp.Controllers
             public int userID { get; set; }
             public string firstName { get; set; }
             public string lastName { get; set; }
-            public string userName { get; set; }
             public string email { get; set; }
             public string password { get; set; }
             public DateTime joined_on { get; set; }
@@ -222,7 +221,7 @@ namespace FinalsApp.Controllers
                         conn.Open();
                     }
 
-                    var sqlStatement = string.Format("INSERT INTO users_tbl (firstName, lastName, userName, email, PASSWORD) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}')", e.firstName, e.lastName, e.userName, e.email, e.password);
+                    var sqlStatement = string.Format("INSERT INTO users_tbl (firstName, lastName, email, PASSWORD) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}')", e.firstName, e.lastName, e.email, e.password);
                     // Add if condition, if e.userId is = 0, Insert (because user is not yet existing), > 0 is Update
                     MySqlCommand command = new MySqlCommand(sqlStatement, conn);
                     command.CommandType = CommandType.Text;
@@ -256,7 +255,7 @@ namespace FinalsApp.Controllers
                 //Find user by username or email
                 var existingUser = db.users_tbl
                     .FirstOrDefault(u =>
-                        (u.userName.ToLower() == loginData.userNameLogin.ToLower())
+                        (u.email.ToLower() == loginData.emailLogin.ToLower())
                         );
 
                 if (existingUser != null)
