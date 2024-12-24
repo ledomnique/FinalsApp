@@ -205,10 +205,13 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\img\findbook-bg.jpg" />
+    <Content Include="Content\img\login-bg.jpg" />
     <Content Include="Content\img\loginbg.jpg" />
     <Content Include="Content\img\logo_dark-bg.png" />
     <Content Include="Content\img\logo_script-removebg-preview 1.png" />
+    <Content Include="Content\img\register-bg.jpg" />
     <Content Include="Content\img\request-bg.png" />
+    <Content Include="Content\img\requestbook-bg.jpg" />
     <Content Include="Content\loginstyle.css" />
     <Content Include="Content\img\footer-logo.png" />
     <Content Include="Content\img\landing-image.jpg" />
