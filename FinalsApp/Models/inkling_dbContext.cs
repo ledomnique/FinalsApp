@@ -21,8 +21,7 @@ namespace FinalsApp.Models
         }
 
         public virtual DbSet<users_tblModel> users_tbl { get; set; }
-        public virtual DbSet<books_tblModel> books_tbl { get; set; }
-        public virtual DbSet<genres_tblModel> genres_tbl { get; set; }
+        /* public virtual DbSet<books_tblModel> books_tbl { get; set; } */
 
 
         //if multiple tables in database, multiple virtual DbSet(s)

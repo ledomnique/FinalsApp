@@ -21,7 +21,8 @@
                         <li><a href="@Url.Action("Homepage", "Home")">Home</a></li>
                         <li><a href="@Url.Action("FindBook","Home")">Find A Book</a></li>
                         <li><a href="@Url.Action("RequestBook","Home")">Request A Book</a></li>
-                        <li><a href="@Url.Action("LoginPage", "Home")">Login</a></li>
+                        <li><a href="@Url.Action("UserProfile", "Home")">Profile</a></li>
+                        <li><a href="#" ng-click="logoutUser()">Logout</a></li>
                     </ul>
                 </div>
             </nav>
@@ -33,7 +34,8 @@
         <li><a href="@Url.Action("Homepage", "Home")">Home</a></li>
         <li><a href="@Url.Action("FindBook", "Home")">Find A Book</a></li>
         <li><a href="@Url.Action("RequestBook","Home")">Request A Book</a></li>
-        <li><a href="@Url.Action("LoginPage", "Home")">Login</a></li>
+        <li><a href="@Url.Action("UserProfile", "Home")">Profile</a></li>
+        <li><a href="#" ng-click="logoutUser()">Logout</a></li>
     </ul>
 
     <!--Main Content-->

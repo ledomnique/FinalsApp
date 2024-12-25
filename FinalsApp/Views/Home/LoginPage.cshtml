@@ -37,27 +37,26 @@
 
     <div class="container">
         <div class="form-box login">
-            <form action="">
+            <form>
                 <h1>Login</h1>
                 <div class="input-box">
-                    <input type="email" id="uEmail" placeholder="Email" ng-model="userEmail" required>
+                    <input type="email" id="uEmail" placeholder="Email" ng-model="userLoginEmail" required>
                     <i class="material-icons">email</i>
                 </div>
                 <div class="input-box">
-                    <input type="password" id="uPassword" placeholder="Password" ng-model="userPassword" required>
+                    <input type="password" id="uPassword" placeholder="Password" ng-model="userLoginPassword" required>
                     <i class="material-icons">lock</i>
                 </div>
                 <div class="forgot-link">
                     <a href="#">Forgot Password?</a>
                 </div>
-                <button type="submit" class="btn" ng-click="loginFunc()">Login</button>
+                <button class="btn" ng-click="loginUser()">Login</button>
                 <p>Inkling 2024</p>
-
             </form>
         </div>
 
         <div class="form-box register">
-            <form action="">
+            <form>
                 <h1>Sign Up</h1>
                 <div class="input-box">
                     <input type="text" id="fName" placeholder="First Name" ng-model="firstName" required>
@@ -75,9 +74,8 @@
                     <input type="password" id="uPassword" placeholder="Password" ng-model="userPassword" required>
                     <i class="material-icons">lock</i>
                 </div>
-                <button type="submit" class="btn" ng-click="submitFunc()">Register</button>
+                <button class="btn" ng-click="signupUser()">Register</button>
                 <p>Inkling 2024</p>
-
             </form>
         </div>
 
