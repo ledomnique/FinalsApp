@@ -58,7 +58,7 @@
         </li>
     </ul>
 
-    
+
 
 
     <!--DataTables for User Table Information-->
@@ -68,28 +68,28 @@
         <!-- Main Content Section -->
         <!-- button id="save-user" ng-click="saveUser()">Save User</button> -->
         <!--
-    <table id="users_tbl" class="display">
-        <thead>
-            <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>User Name</th>
-                <th>Email Address</th>
-                <th>Joined On</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="user in userData">
-                <td>{{user.firstName}}</td>
-                <td>{{user.lastName}}</td>
-                <td>{{user.userName}}</td>
-                <td>{{user.email}}</td>
-                <td>{{user.joined_on}}</td>
-                <td>{{user.joined_on}}</td>
-            </tr>
-        </tbody>
-    </table>
-    -->
+        <table id="users_tbl" class="display">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>User Name</th>
+                    <th>Email Address</th>
+                    <th>Joined On</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="user in userData">
+                    <td>{{user.firstName}}</td>
+                    <td>{{user.lastName}}</td>
+                    <td>{{user.userName}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{user.joined_on}}</td>
+                    <td>{{user.joined_on}}</td>
+                </tr>
+            </tbody>
+        </table>
+        -->
 
         <h3>Users Table</h3>
         <table id="users_tbl1" class="display">
@@ -98,7 +98,6 @@
                     <th>User ID</th>
                     <th>First Name</th>
                     <th>Last Name</th>
-                    <th>Username</th>
                     <th>Email</th>
                     <th>Joined On</th>
                     <th>Action</th>
@@ -111,7 +110,6 @@
                     <td><b>{{user.userID}}</b></td>
                     <td>{{user.firstName}}</td>
                     <td>{{user.lastName}}</td>
-                    <td><b>{{user.userName}}</b></td>
                     <td>{{user.email}}</td>
                     <td>{{user.joined_on | date: shortDate}}</td>
                     <td><button id="delete-user" ng-click="deleteBook(user.userID,$index)">Delete User</button></td>
@@ -120,7 +118,7 @@
         </table>
     </section>
 
-    <br style="margin-top: 20px;"/>
+    <br style="margin-top: 20px;" />
 
     <h3>Admin Users Table</h3>
     <table id="users_tbl2" class="display">

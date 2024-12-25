@@ -102,34 +102,34 @@
             justify-content: flex-end;
         }
 
-        .nav-wrapper ul {
-            margin: 0;
-            padding: 0;
-            display: flex;
-            align-items: center; /* Align items vertically */
-            list-style: none;
-            font-family: Montserrat-Medium;
-        }
+            .nav-wrapper ul {
+                margin: 0;
+                padding: 0;
+                display: flex;
+                align-items: center; /* Align items vertically */
+                list-style: none;
+                font-family: Montserrat-Medium;
+            }
 
-        .nav-wrapper ul li {
-            margin-right: 50px; /* Add spacing between nav items */
-        }
+                .nav-wrapper ul li {
+                    margin-right: 50px; /* Add spacing between nav items */
+                }
 
-        .nav-wrapper ul li a {
-            font-size: 15px;
-            color: var(--nav-text-color);
-            padding: 0 5px; /* Space between links */
-            text-decoration: none;
-        }
+                    .nav-wrapper ul li a {
+                        font-size: 15px;
+                        color: var(--nav-text-color);
+                        padding: 0 5px; /* Space between links */
+                        text-decoration: none;
+                    }
 
-        .nav-wrapper ul li a:hover {
-            color: var(--nav-hover-color);
-            background-color: transparent;
-        }
+                        .nav-wrapper ul li a:hover {
+                            color: var(--nav-hover-color);
+                            background-color: transparent;
+                        }
 
-        .nav-wrapper ul li:active a {
-            color: #A9927D;
-        }
+                    .nav-wrapper ul li:active a {
+                        color: #A9927D;
+                    }
 
         /* Dropdown Menu */
         .dropdown {
@@ -168,13 +168,13 @@
             padding-left: 15px;
         }
 
-        .dropdown-menu li a {
-            display: block;
-            color: black; /* Black text color */
-            text-decoration: none; /* Remove underline */
-            background-color: transparent; /* White background */
-            transition: background-color 0.3s ease, color 0.3s ease; /* Smooth hover transition */
-        }
+            .dropdown-menu li a {
+                display: block;
+                color: black; /* Black text color */
+                text-decoration: none; /* Remove underline */
+                background-color: transparent; /* White background */
+                transition: background-color 0.3s ease, color 0.3s ease; /* Smooth hover transition */
+            }
 
         #changepass {
             font-size: 14px;
@@ -228,10 +228,10 @@
             touch-action: manipulation;
         }
 
-        #save-user:hover {
-            background-color: #1e293b;
-            color: #fff;
-        }
+            #save-user:hover {
+                background-color: #1e293b;
+                color: #fff;
+            }
 
         /* General table styling */
         table {
@@ -257,13 +257,13 @@
             border: 1px solid #dddddd;
         }
 
-        tbody tr:nth-child(even) {
-            background-color: #f9f9f9; /* Light grey background for even rows */
-        }
+            tbody tr:nth-child(even) {
+                background-color: #f9f9f9; /* Light grey background for even rows */
+            }
 
-        tbody tr:hover {
-            background-color: #f1f1f1; /* Slightly darker grey on hover */
-        }
+            tbody tr:hover {
+                background-color: #f1f1f1; /* Slightly darker grey on hover */
+            }
 
         /* Table cells */
         td {
@@ -304,23 +304,53 @@
             white-space: nowrap;
         }
 
-        #delete-user:active {
-            border-color: #4a4a4a;
-            outline: 0;
+            #delete-user:active {
+                border-color: #4a4a4a;
+                outline: 0;
+            }
+
+            #delete-user:focus {
+                border-color: #485fc7;
+                outline: 0;
+            }
+
+            #delete-user:hover {
+                border-color: #b5b5b5;
+            }
+
+            #delete-user:focus:not(:active) {
+                box-shadow: rgba(72, 95, 199, .25) 0 0 0 .125em;
+            }
+
+        .welcome {
+            display: flex;
+            justify-content: center; /* Horizontally center the content */
+            align-items: center; /* Vertically center the content */
+            text-align: center; /* Center-align text */
+            height: 70vh; /* Optional: Make section full height */
         }
 
-        #delete-user:focus {
-            border-color: #485fc7;
-            outline: 0;
-        }
+            .welcome .container {
+                width: 100%; /* Ensure container spans the full width */
+            }
 
-        #delete-user:hover {
-            border-color: #b5b5b5;
-        }
+            .welcome h1,
+            .welcome h2 {
+                margin: 10px; /* Remove default margin for headings */
+                color: #333; /* Optional: Set text color */
+            }
 
-        #delete-user:focus:not(:active) {
-            box-shadow: rgba(72, 95, 199, .25) 0 0 0 .125em;
-        }
+            .welcome h1 {
+                font-size: 500%;
+                font-family: Montserrat-Bold;
+                color: #a9927d;
+            }
+
+            .welcome h2 {
+                font-family: Montserrat-Medium;
+                font-weight: 600;
+            }
+
 
         /*Sidenav - responsive menu*/
         i {
@@ -332,19 +362,19 @@
             background-color: white;
         }
 
-        .sidenav li {
-            margin-top: 20px;
-        }
+            .sidenav li {
+                margin-top: 20px;
+            }
 
-        .sidenav li a {
-            font-weight: 500;
-            font-size: 15px;
-        }
+                .sidenav li a {
+                    font-weight: 500;
+                    font-size: 15px;
+                }
 
-        .sidenav li a:hover {
-            color: #49111C;
-            background-color: #a9927d;
-        }
+                    .sidenav li a:hover {
+                        color: #49111C;
+                        background-color: #a9927d;
+                    }
 
         /* Admin Dash Side Nav */
         .custom-sidenav {
@@ -441,6 +471,9 @@
                 menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
             });
         });
+
+        const d = new Date();
+        document.getElementById("date").innerHTML = d;
 
     </script>
 </body>
