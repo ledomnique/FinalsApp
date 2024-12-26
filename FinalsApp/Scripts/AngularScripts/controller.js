@@ -1,4 +1,4 @@
-﻿app.controller("FinalsController", function ($scope, FinalsAppService) {
+﻿app.controller("FinalsController", function ($timeout, $scope, FinalsAppService) {
     // Initialize user object
     $scope.user = JSON.parse(sessionStorage.getItem("userCredentials")) || {};
 
@@ -128,5 +128,106 @@
             }
         );
     };
+
+    //Lewis' Code
+
+    //Initialize Admin Dashboard
+    $scope.welcomeAdmin = function () {
+        Swal.fire({
+            title: 'Welcome, Admin!',
+            icon: 'success',
+            text: 'You can now access the Dashboard.',
+            confirmButtonText: 'Continue',
+            allowOutsideClick: false,
+            allowEscapeKey: false
+        })
+    }
+
+    $scope.logData = function () {
+
+    }
+
+    $scope.getUsersData = function () {
+        FinalsAppService.getUsersData().then(function (response) {
+            console.log("Loaded Data: ", response.data); // Debugging
+            $scope.userData = response.data;
+
+            angular.element(document).ready(function () {
+                dTable = $('#users_tbl')
+                dTable.DataTable();
+            });
+
+
+
+
+            //let table = new DataTable('#users_tbl', {
+            //    // config options...
+            //});
+
+
+
+            //If using a table (e.g., DataTables)
+            $timeout(function () {
+                $('#users_tbl').DataTable();
+            }, 0);
+        }, function (error) {
+            console.error("Error loading user data: ", error);
+        });
+    }
+
+    $scope.loadBooksData = function () {
+        FinalsAppService.loadBooksData().then(function (response) {
+            console.log("Loaded Data: ", response.data); // Debugging
+            $scope.bookData = response.data;
+
+            angular.element(document).ready(function () {
+                dTable = $('#books_tbl')
+                dTable.DataTable();
+            });
+
+            $timeout(function () {
+                $('#users_tbl').DataTable();
+            }, 0);
+
+        }, function (error) {
+            console.error("Error loading user data: ", error);
+        });
+    }
+
+    $scope.loadAdminData = function () {
+        FinalsAppService.loadAdminsData().then(function (response) {
+            console.log("Loaded Data: ", response.data); // Debugging
+            $scope.adminData = response.data;
+
+            // If using a table (e.g., DataTables)
+            //$timeout(function () {
+            //    $('#users_tbl').DataTable();
+            //}, 0);
+        }, function (error) {
+            console.error("Error loading user data: ", error);
+        });
+    }
+
+    $scope.loadAdminData();
+
+    $scope.getUsersData();
+
+    $scope.loadBooksData();
+
+    $scope.deleteUser = function (userID, index) {
+        if (confirm("Are you sure you want to delete this user?")) {
+            FinalsAppService.deleteUser(userID).then(function (response) {
+                if (response.data.success) {
+                    // Remove the book from the scope (front-end)
+                    $scope.userData.splice(index, 1);
+                    console.log("User deleted successfully!");
+                } else {
+                    console.error("Failed to delete user.");
+                }
+            }, function (error) {
+                console.error("Error deleting user: ", error);
+            });
+        }
+    }
 
 });

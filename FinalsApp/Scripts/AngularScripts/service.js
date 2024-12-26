@@ -37,4 +37,34 @@
             data: passwordData
         });
     };
+
+    // Lewis' code
+    this.getUsersData = function () {
+        return $http({
+            method: "GET",
+            url: "/Home/GetUsers"
+        });
+    };
+
+    this.deleteUser = function () {
+        return $http({
+            method: "DELETE",
+            url: "/Home/DeleteUser",
+            params: { id: userID }
+        });
+    }
+
+    this.loadBooksData = function () {
+        return $http({
+            method: "GET",
+            url: "/Home/GetBooks"
+        });
+    };
+
+    this.loadAdminsData = function () {
+        return $http({
+            method: "GET",
+            url: "/Home/GetAdmins"
+        });
+    };
 });
