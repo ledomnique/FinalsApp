@@ -1,0 +1,142 @@
+﻿@{
+    Layout = "~/Views/Shared/_AdminDashboardLayout.cshtml";
+}
+
+<body ng-init="loadUsersData()" ng-controller="FinalsController">
+    <!--Navigation Bar-->
+    <header class="header">
+        <div class="navbar-fixed">
+            <nav class="z-depth-4">
+                <div class="nav-wrapper">
+                    <a href="#" class="logo">
+                        <img src="~/Content/img/white-logo.png" class="logo-img" />
+                    </a>
+                    <!-- Sidenav Trigger (Hamburger Icon) -->
+                    <a href="#" data-target="mobile-demo" class="sidenav-trigger">
+                        <i class="material-icons">menu</i>
+                    </a>
+                    <ul class="right hide-on-med-and-down">
+                        <li>
+                            <a href="@Url.Action("Dashboard", "Home")">Dashboard</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("ManageUsers","Home")">Manage Users</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("ManageBooks","Home")">Manage Books</a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-trigger">Administrator</a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a id="logout" href="@Url.Action("LoginPage", "Home")">Logout</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Sidenav for Mobile -->
+    <ul class="sidenav right-aligned" id="mobile-demo">
+        <li>
+            <a href="@Url.Action("Dashboard", "Home")">Dashboard</a>
+        </li>
+        <li>
+            <a href="@Url.Action("ManageUsers", "Home")">Manage Users</a>
+        </li>
+        <li>
+            <a href="@Url.Action("ManageBooks","Home")">Manage Books</a>
+        </li>
+        <li>
+            <a href="#">Administrator</a>
+        </li>
+    </ul>
+
+
+
+
+    <!--DataTables for User Table Information-->
+    <br style="margin-bottom: 30px;" />
+
+    <section>
+        <!-- Main Content Section -->
+        <!-- button id="save-user" ng-click="saveUser()">Save User</button> -->
+        <!--
+        <table id="users_tbl" class="display">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>User Name</th>
+                    <th>Email Address</th>
+                    <th>Joined On</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="user in userData">
+                    <td>{{user.firstName}}</td>
+                    <td>{{user.lastName}}</td>
+                    <td>{{user.userName}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{user.joined_on}}</td>
+                    <td>{{user.joined_on}}</td>
+                </tr>
+            </tbody>
+        </table>
+        -->
+
+        <h3>Users Table</h3>
+        <table id="users_tbl1" class="display">
+            <thead>
+                <tr>
+                    <th>User ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Joined On</th>
+                    <th>Action</th>
+
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="user in userData">
+                    <td><b>{{user.userID}}</b></td>
+                    <td>{{user.firstName}}</td>
+                    <td>{{user.lastName}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{user.joined_on | date: shortDate}}</td>
+                    <td><button id="delete-user" ng-click="deleteBook(user.userID,$index)">Delete User</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <br style="margin-top: 20px;" />
+
+    <h3>Admin Users Table</h3>
+    <table id="users_tbl2" class="display">
+        <thead>
+            <tr>
+                <th>Admin ID</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Account Created On</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="user in adminData">
+                <td><b>{{user.adminID}}</b></td>
+                <td>{{user.userName}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.created_on | date: shortDate}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+</body>

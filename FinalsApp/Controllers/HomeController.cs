@@ -1,189 +1,354 @@
 ﻿using FinalsApp.Models;
+using Microsoft.AspNetCore.Mvc;
+using MySql.Data.MySqlClient;
+using MySqlX.XDevAPI.Common;
+using Newtonsoft.Json;
+using Org.BouncyCastle.Crypto.Generators;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using HttpDeleteAttribute = System.Web.Mvc.HttpDeleteAttribute;
+using HttpGetAttribute = Microsoft.AspNetCore.Mvc.HttpGetAttribute;
+using HttpPostAttribute = Microsoft.AspNetCore.Mvc.HttpPostAttribute;
 
 namespace FinalsApp.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public string MySQLConnectionString
+        {
+            get { return ConfigurationManager.ConnectionStrings["inkling_db"].ToString(); }
+        }
+
+        public System.Web.Mvc.ActionResult Homepage()
         {
             return View();
         }
 
-        public ActionResult About()
+        public System.Web.Mvc.ActionResult LoginPage()
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
-
-        public ActionResult Homepage()
+        public System.Web.Mvc.ActionResult FindBook()
         {
             return View();
         }
 
-        public ActionResult LoginPage()
-        {
-            return View();
-        }
-        public ActionResult FindBook()
+        public System.Web.Mvc.ActionResult UserLogin()
         {
             return View();
         }
 
-        public ActionResult UserLogin()
+        public System.Web.Mvc.ActionResult RequestBook()
+        {
+            return View();
+        }
+
+        public System.Web.Mvc.ActionResult RegisterPage()
+        {
+            return View();
+        }
+        public System.Web.Mvc.ActionResult Dashboard()
+        {
+            return View();
+        }
+
+        public System.Web.Mvc.ActionResult ManageUsers()
+        {
+            return View();
+        }
+        public System.Web.Mvc.ActionResult ManageBooks()
+        {
+            return View();
+        }
+
+        public System.Web.Mvc.ActionResult AboutUs()
+        {
+            return View();
+        }
+        public System.Web.Mvc.ActionResult Terms()
+        {
+            return View();
+        }
+        public System.Web.Mvc.ActionResult Contact()
         {
             return View();
         }
 
         [HttpGet]
-        public ActionResult RequestBook()
+        public System.Web.Mvc.ActionResult Admin()
         {
+
+
+            ViewBag.Message = "Your application description page.";
+
+            //ViewBag.adminData = table;
+
+
+
+
+
+
             return View();
         }
 
-        public ActionResult RegisterPage()
+        public class UserEntity
         {
-            return View();
+            public int userID { get; set; }
+            public string firstName { get; set; }
+            public string lastName { get; set; }
+            public string email { get; set; }
+            public string password { get; set; }
+            public DateTime joined_on { get; set; }
+
         }
-
-        public ActionResult AdminDashboard()
+        [HttpGet]
+        public string GetUsers()
         {
-            return View();
-        }
-
-        public ActionResult UserProfile()
-        {
-            return View();
-        }
-
-
-        /* public JsonResult LoadBookInfo()
-        {
-            using (var db = new inkling_dbContext())
+            string result = string.Empty;
+            //MySqlConnection conn = new MySqlConnection("Server=localhost;Port=3306;Database=inkling_db;Uid=root;");
+            MySqlConnection conn = new MySqlConnection(MySQLConnectionString);
+            if (conn.State == ConnectionState.Closed)
             {
-                var userData = (from bData in db.books_tbl
-                                join gdata in db.genres_tbl on bData.genreID equals gdata.genreID
-                                select new { bData, gdata }).ToList();
-                return Json(userData, JsonRequestBehavior.AllowGet);
+                conn.Open();
             }
-        } */
-
-        public JsonResult LoadUsersData()
-        {
-            using (var db = new inkling_dbContext())
-            {
-                var empData = (from eData in db.users_tbl
-                               select new { eData }).ToList();
-                return Json(empData, JsonRequestBehavior.AllowGet);
-            }
+            MySqlCommand cmd = new MySqlCommand("SELECT * FROM users_tbl", conn);
+            DataTable table = new DataTable();
+            table.Load(cmd.ExecuteReader());
+            JsonSerializerSettings settings = new JsonSerializerSettings();
+            settings.Converters.Add(new CustomDataSetConverter());
+            settings.Formatting = Formatting.Indented;
+            settings.MaxDepth = Int32.MaxValue;
+            string jsonObject = JsonConvert.SerializeObject(table, settings);
+            result = jsonObject;
+            return result;
         }
 
-        public int SignupUser(users_tblModel newUser)
+        public class BookEntity
         {
-            using (var db = new inkling_dbContext())
+            public int bookID { get; set; }
+            public string title { get; set; }
+            public string author { get; set; }
+            public int genreID { get; set; }
+            public DateTime published_on { get; set; }
+            public string description { get; set; }
+        }
+        [HttpGet]
+        public string GetBooks()
+        {
+            string result = string.Empty;
+
+            //MySqlConnection conn = new MySqlConnection("Server=localhost;Port=3306;Database=inkling_db;Uid=root;");
+            MySqlConnection conn = new MySqlConnection(MySQLConnectionString);
+            if (conn.State == ConnectionState.Closed)
             {
-                newUser.joined_on = DateTime.Now;
-                db.users_tbl.Add(newUser);
-                db.SaveChanges();
-                return newUser.userID;
+                conn.Open();
             }
+
+            MySqlCommand cmd = new MySqlCommand("SELECT * FROM books_tbl", conn);
+
+            DataTable table = new DataTable();
+            table.Load(cmd.ExecuteReader());
+
+            JsonSerializerSettings settings = new JsonSerializerSettings();
+            settings.Converters.Add(new CustomDataSetConverter());
+            settings.Formatting = Formatting.Indented;
+            settings.MaxDepth = Int32.MaxValue;
+
+            string jsonObject = JsonConvert.SerializeObject(table, settings);
+
+            result = jsonObject;
+
+            return result;
+
+
         }
 
-        public int LoginUser(string email, string password)
+        public class AdminEntity
         {
-            using (var db = new inkling_dbContext())
+            public int adminId { get; set; }
+            public string userName { get; set; }
+            public string email { get; set; }
+            public string password { get; set; }
+            public DateTime created_on { get; set; }
+        }
+        [HttpGet]
+        public string GetAdmins()
+
+        {
+            string result = string.Empty;
+
+            //MySqlConnection conn = new MySqlConnection("Server=localhost;Port=3306;Database=inkling_db;Uid=root;");
+            MySqlConnection conn = new MySqlConnection(MySQLConnectionString);
+            if (conn.State == ConnectionState.Closed)
+            {
+                conn.Open();
+            }
+
+            MySqlCommand cmd = new MySqlCommand("SELECT * FROM admin_tbl", conn);
+
+            DataTable table = new DataTable();
+            table.Load(cmd.ExecuteReader());
+
+            JsonSerializerSettings settings = new JsonSerializerSettings();
+            settings.Converters.Add(new CustomDataSetConverter());
+            settings.Formatting = Formatting.Indented;
+            settings.MaxDepth = Int32.MaxValue;
+
+            string jsonObject = JsonConvert.SerializeObject(table, settings);
+
+            result = jsonObject;
+
+            return result;
+
+
+        }
+
+        [HttpPost]
+        public string saveUser([FromBody] users_tblModel e)
+        {
+            using (MySqlConnection conn = new MySqlConnection(MySQLConnectionString))
             {
                 try
                 {
-                    var user = db.users_tbl.FirstOrDefault(x => x.email == email && x.password == password);
-                    return user?.userID ?? 0;
-                }
-                catch
-                {
-                    return 0;
-                }
-            }
-        }
-
-        public JsonResult GetUserById(int userId)
-        {
-            using (var db = new inkling_dbContext())
-            {
-                var user = db.users_tbl
-                    .Where(x => x.userID == userId)
-                    .Select(x => new
+                    if (conn.State == ConnectionState.Closed)
                     {
-                        x.userID,
-                        x.firstName,
-                        x.lastName,
-                        x.email
-                    })
-                    .FirstOrDefault();
-
-                if (user == null)
-                {
-                    return Json(new { error = "User not found" }, JsonRequestBehavior.AllowGet);
-                }
-
-                return Json(user, JsonRequestBehavior.AllowGet);
-            }
-        }
-
-        // New ChangePassword Action
-        public JsonResult ChangePassword(int userId, string currentPassword, string newPassword)
-        {
-            using (var db = new inkling_dbContext())
-            {
-                try
-                {
-                    var user = db.users_tbl.FirstOrDefault(x => x.userID == userId);
-
-                    if (user == null)
-                    {
-                        return Json(new { success = false, message = "User not found." });
+                        conn.Open();
                     }
 
-                    // Ensure the current password matches the database record
-                    if (user.password != currentPassword)
-                    {
-                        return Json(new { success = false, message = "Current password is incorrect." });
-                    }
+                    var sqlStatement = string.Format("INSERT INTO users_tbl (firstName, lastName, email, PASSWORD) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}')", e.firstName, e.lastName, e.email, e.password);
+                    // Add if condition, if e.userId is = 0, Insert (because user is not yet existing), > 0 is Update
+                    MySqlCommand command = new MySqlCommand(sqlStatement, conn);
+                    command.CommandType = CommandType.Text;
+                    command.ExecuteNonQuery();
 
-                    // Update password in the database
-                    user.password = newPassword;
-                    db.SaveChanges();
-
-                    return Json(new { success = true, message = "Password updated successfully!" });
+                    if (e.userID > 0)
+                        return "Record has been successfully updated.";
+                    else
+                        return "Record has been successfully created.";
                 }
                 catch (Exception ex)
                 {
-                    return Json(new { success = false, message = "An error occurred while updating the password.", error = ex.Message });
+                    return ex.Message;
+                }
+                finally
+                {
+                    if (conn.State == ConnectionState.Open)
+                    {
+                        conn.Close();
+                    }
                 }
             }
         }
 
-        public int RequestBook(bookrequest_tblModel newBook)
+        // Login Function for User + Admin
+        [HttpPost]
+        public JsonResult LogData(LoginModel loginData)
         {
             using (var db = new inkling_dbContext())
             {
-                newBook.created_on = DateTime.Now;
-                db.bookrequest_tbl.Add(newBook);
-                db.SaveChanges();
-                return newBook.bookreqID; // Return the bookreqID to Angular
+                //Find user by username or email
+                var existingUser = db.users_tbl
+                    .FirstOrDefault(u =>
+                        (u.email.ToLower() == loginData.emailLogin.ToLower())
+                        );
+
+                if (existingUser != null)
+                {
+                    return Json(new { success = false, message = "User not found." });
+                }
+
+                //Check if password is correct
+                bool isPassword = BCrypt.Net.BCrypt.Verify(loginData.passwordLogin, existingUser.password);
+                if (!isPassword)
+                {
+                    return Json(new { success = false, message = "Invalid password." });
+                }
+
+                //Login successful = save cookies
+                HttpCookie authCookie = new HttpCookie("UserSession");
+                authCookie.Value = existingUser.userID.ToString(); //Stores user ID/session token
+                authCookie.Expires = DateTime.Now.AddHours(1); //Cookie expires in 1 hour
+                Response.Cookies.Add(authCookie);
+
+                //Login successful
+                return Json(new { success = true, message = "Login successful." });
+
             }
         }
 
+
+        /*
+        [HttpPost]
+        public IActionResult ChangePassword([FromBody] ChangePasswordModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                // Validate old password and update new password logic here
+                bool isPasswordUpdated = PasswordService.UpdatePassword(User.Identity.Name, model.OldPassword, model.NewPassword);
+
+                if (isPasswordUpdated)
+                {
+                    return Ok(new { message = "Password changed successfully." });
+                }
+                else
+                {
+                    return BadRequest(new { message = "Invalid old password." });
+                }
+            }
+
+            return BadRequest(new { message = "Invalid request." });
+        }
+
+        public class ChangePasswordModel
+        {
+            public string OldPassword { get; set; }
+            public string NewPassword { get; set; }
+        }
+        */
+
+
+        [HttpDelete]
+        public JsonResult DeleteUser(int id)
+        {
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(MySQLConnectionString))
+                {
+                    if (conn.State == ConnectionState.Closed)
+                    {
+                        conn.Open();
+                    }
+
+                    string query = "DELETE FROM inkling_db.users_tbl WHERE userID = @userID";
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@userID", id);
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    conn.Close();
+
+                    if (rowsAffected > 0)
+                    {
+                        return Json(new { success = true });
+                    }
+                    else
+                    {
+                        return Json(new { success = false, message = "No rows affected." });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = ex.Message });
+            }
+        }
+
+
     }
 }
+

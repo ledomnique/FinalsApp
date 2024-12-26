@@ -159,6 +159,7 @@
             text-align: center;
             font-family: Montserrat-Bold;
             color: var(--hero-title-color);
+            margin-top: -80px;
         }
 
         .search h1 {
@@ -167,8 +168,48 @@
             font-weight: 500;
         }
 
-        input {
-            color: white;
+        /* Style for the search input field */
+        .search input[type="text"] {
+            width: 100%;
+            max-width: 800px;
+            padding: 10px 30px;
+            margin-top: 40px;
+            border: 2px solid #49111C;
+            border-radius: 25px;
+            background-color: #fff;
+            font-size: 16px;
+            box-shadow: 0 2px 5px rgba(#49111C);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* Focus effect for the input field */
+        .search input[type="text"]:focus {
+            border-color: #49111C; /* Change to your desired focus color */
+            box-shadow: 0 2px 5px rgba(#a9927d);
+            outline: none;
+        }
+
+        /* Change the blue underline on focus */
+        input:focus {
+            border-bottom: 1px solid #49111C !important; /* Replace #ff5722 with your desired color */
+            box-shadow: 0 1px 0 0 #ff5722 !important; /* Replace #ff5722 with your desired color */
+        }
+
+        /* Optional: Customize label color on focus */
+        input:focus + label {
+            color: #a9927d !important; /* Replace #ff5722 with your desired color */
+        }
+
+        /* Add placeholder styling */
+        .search input[type="text"]::placeholder {
+            color: #aaa;
+            font-family: Montserrat-MediumItalic;
+        }
+
+        /* Centering within the section */
+        .search .container {
+            text-align: center;
+            padding-top: 30px;
         }
 
 
@@ -282,7 +323,7 @@
 
         /* Handle */
         ::-webkit-scrollbar-thumb {
-            background: #49111C;
+            background: #0A0908;
         }
 
         /* Handle on hover */
@@ -291,7 +332,7 @@
         }
     </style>
 </head>
-<body>
+<body ng-app="FinalsApplication" ng-controller="FinalsController">
     <div>
         @RenderBody()
     </div>
@@ -299,8 +340,8 @@
     <script src="~/Scripts/jquery-3.7.1.min.js"></script>
     <script src="~/Scripts/angular.js"></script>
     <script src="~/Scripts/AngularScripts/Module.js"></script>
-    <script src="~/Scripts/AngularScripts/Controller.js"></script>
     <script src="~/Scripts/AngularScripts/Service.js"></script>
+    <script src="~/Scripts/AngularScripts/Controller.js"></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
