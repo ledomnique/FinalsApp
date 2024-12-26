@@ -21,7 +21,8 @@ namespace FinalsApp.Models
         }
 
         public virtual DbSet<users_tblModel> users_tbl { get; set; }
-        /* public virtual DbSet<books_tblModel> books_tbl { get; set; } */
+        public virtual DbSet<books_tblModel> books_tbl { get; set; }
+        public virtual DbSet<bookrequest_tblModel> bookrequest_tbl { get; set; }
 
 
         //if multiple tables in database, multiple virtual DbSet(s)
@@ -29,7 +30,10 @@ namespace FinalsApp.Models
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
             modelBuilder.Configurations.Add(new users_tblMap());
+            modelBuilder.Configurations.Add(new books_tblMap());
+            modelBuilder.Configurations.Add(new bookrequest_tblMap());
         }
     }
 }

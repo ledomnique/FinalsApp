@@ -129,4 +129,17 @@
         );
     };
 
+    $scope.requestBook = function () {
+        var newBook = {
+            title: $scope.bookTitle,
+            author: $scope.bookAuthor,
+            published_on: $scope.publishedOn
+        }
+        var response = FinalsAppService.RequestBook(newBook);
+        response.then((result) => {
+            sessionStorage.setItem("bookreqID", result.data)
+            window.location.href = "/Home/RequestBook"
+        })
+    }
+
 });

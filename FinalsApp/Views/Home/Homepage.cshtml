@@ -22,7 +22,6 @@
                         <li><a href="@Url.Action("FindBook","Home")">Find A Book</a></li>
                         <li><a href="@Url.Action("RequestBook","Home")">Request A Book</a></li>
                         <li><a href="@Url.Action("UserProfile", "Home")">Profile</a></li>
-                        <li><a href="#" ng-click="logoutUser()">Logout</a></li>
                     </ul>
                 </div>
             </nav>
@@ -35,7 +34,6 @@
         <li><a href="@Url.Action("FindBook", "Home")">Find A Book</a></li>
         <li><a href="@Url.Action("RequestBook","Home")">Request A Book</a></li>
         <li><a href="@Url.Action("UserProfile", "Home")">Profile</a></li>
-        <li><a href="#" ng-click="logoutUser()">Logout</a></li>
     </ul>
 
     <!--Main Content-->
@@ -48,7 +46,7 @@
                     <div class="col-lg-8">
                         <h1>Welcome to Inkling!</h1>
                         <p>Where books and community come together</p>
-                        <a href="@Url.Action("FindBook", "Home")" class="started black z-depth-4">Get Started</a>
+                        <a href="@Url.Action("LoginPage", "Home")" class="started black z-depth-4">Get Started</a>
                     </div>
                 </div>
             </div>

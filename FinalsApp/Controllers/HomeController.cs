@@ -47,6 +47,7 @@ namespace FinalsApp.Controllers
             return View();
         }
 
+        [HttpGet]
         public ActionResult RequestBook()
         {
             return View();
@@ -173,7 +174,16 @@ namespace FinalsApp.Controllers
             }
         }
 
+        public int RequestBook(bookrequest_tblModel newBook)
+        {
+            using (var db = new inkling_dbContext())
+            {
+                newBook.created_on = DateTime.Now;
+                db.bookrequest_tbl.Add(newBook);
+                db.SaveChanges();
+                return newBook.bookreqID; // Return the bookreqID to Angular
+            }
+        }
 
     }
 }
-

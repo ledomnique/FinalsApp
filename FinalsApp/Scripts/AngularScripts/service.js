@@ -33,8 +33,16 @@
     this.changePassword = function (passwordData) {
         return $http({
             method: "POST",
-            url: "/Home/ChangePassword",  // Ensure this URL matches your backend route
+            url: "/Home/ChangePassword", 
             data: passwordData
         });
     };
+
+    this.RequestBook = function (newBook) {
+        return $http({
+            method: "POST",
+            url: "/Home/RequestBook",
+            data: newBook
+        });
+    }
 });
