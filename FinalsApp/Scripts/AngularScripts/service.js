@@ -1,55 +1,40 @@
 ﻿app.service("FinalsAppService", function ($http) {
-
-    this.loadUsersData = function () {
+    this.loadUsersData = function (getData) {
         return $http({
-            method: "GET",
-            url: "/Home/GetUsers"
+            method: "POST",
+            url: "/Home/LoadUsersData",
+            data: getData
         });
     };
 
-    this.deleteUser = function () {
+    this.SignupUser = function (newUser) {
         return $http({
-            method: "DELETE",
-            url: "/Home/DeleteUser",
-            params: { id: userID }
-        });
-    }
-
-    this.loadBooksData = function () {
-        return $http({
-            method: "GET",
-            url: "/Home/GetBooks"
+            method: "POST",
+            url: "/Home/SignupUser",
+            data: newUser
         });
     };
 
-    this.loadAdminsData = function () {
+    this.LoginUser = function (email, password) {
         return $http({
-            method: "GET",
-            url: "/Home/GetAdmins"
+            method: "POST",
+            url: "/Home/LoginUser",
+            data: { email, password }
         });
     };
 
-    this.saveUser = function () {
-        var url = "/Home/saveUser"
+    this.getUserById = function (userId) {
+        return $http({
+            method: "GET",
+            url: `/Home/GetUserById?userId=${userId}`,
+        });
+    };
 
-        var data = {
-            UserID: 0
-            , firstName: 'c'
-            , lastName: 'c'
-            , email: 'c@icloud.com'
-            , password: 'cne123'
-        };
-
-        $http.post(url, data, 'contenttype').then(function (response) {
-
-            if (response.data !== null) {
-                alert("User saved successfully!");
-            }
-        },
-            function (response) {
-                alert("Error saving user.");
-            });
-    }
-
-    
+    this.changePassword = function (passwordData) {
+        return $http({
+            method: "POST",
+            url: "/Home/ChangePassword",  // Ensure this URL matches your backend route
+            data: passwordData
+        });
+    };
 });
