@@ -278,8 +278,10 @@
     </Compile>
     <Compile Include="Models\books_tblMap.cs" />
     <Compile Include="Models\books_tblModel.cs" />
+    <Compile Include="Models\Book.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\inkling_dbContext.cs" />
+    <Compile Include="Models\Review.cs" />
     <Compile Include="Models\users_tblMap.cs" />
     <Compile Include="Models\users_tblModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -302,6 +304,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\img\bookcovers\alice-in-wonderland-bookcover.jpg" />
     <Content Include="Content\img\findbook-bg.jpg" />
     <Content Include="Content\img\login-bg.jpg" />
     <Content Include="Content\img\loginbg.jpg" />

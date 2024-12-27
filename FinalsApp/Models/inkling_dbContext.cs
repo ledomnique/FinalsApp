@@ -30,6 +30,12 @@ namespace FinalsApp.Models
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Configurations.Add(new users_tblMap());
+
+            modelBuilder.Entity<Review>()
+                .HasRequired(r => r.Book) // Reference the navigation property in Review
+                .WithMany(b => b.Reviews) // Reference the navigation property in Book
+                .HasForeignKey(r => r.BookId); // Specify the foreign key property
+
         }
     }
 }

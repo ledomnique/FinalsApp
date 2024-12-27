@@ -67,7 +67,10 @@ namespace FinalsApp.Controllers
         {
             return View();
         }
-
+        public System.Web.Mvc.ActionResult SelectedBook()
+        {
+            return View();
+        }
         public System.Web.Mvc.ActionResult AboutUs()
         {
             return View();

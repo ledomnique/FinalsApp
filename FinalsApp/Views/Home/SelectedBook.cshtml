@@ -2,4 +2,124 @@
     Layout = "~/Views/Shared/_SelectedBookLayout.cshtml";
 }
 
+<body>
 
+    <!--Navigation Bar-->
+    <header class="header">
+        <div class="navbar-fixed">
+            <nav class="z-depth-4">
+                <div class="nav-wrapper">
+                    <a href="@Url.Action("Homepage", "Home")" class="logo">
+                        <img src="~/Content/img/white-logo.png" class="logo-img" />
+                    </a>
+                    <!-- Sidenav Trigger (Hamburger Icon) -->
+                    <a href="#" data-target="mobile-demo" class="sidenav-trigger">
+                        <i class="material-icons">menu</i>
+                    </a>
+                    <ul class="right hide-on-med-and-down">
+                        <li><a href="@Url.Action("Homepage", "Home")">Home</a></li>
+                        <li><a href="@Url.Action("FindBook","Home")">Find A Book</a></li>
+                        <li><a href="@Url.Action("RequestBook","Home")">Request A Book</a></li>
+                        <li><a href="@Url.Action("UserProfile", "Home")">Profile</a></li>
+                        <li><a href="#" ng-click="logoutUser()">Logout</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Sidenav for Mobile -->
+    <ul class="sidenav right-aligned" id="mobile-demo">
+        <li><a href="@Url.Action("Homepage", "Home")">Home</a></li>
+        <li><a href="@Url.Action("FindBook", "Home")">Find A Book</a></li>
+        <li><a href="@Url.Action("RequestBook","Home")">Request A Book</a></li>
+        <li><a href="@Url.Action("UserProfile", "Home")">Profile</a></li>
+        <li><a href="#" ng-click="logoutUser()">Logout</a></li>
+    </ul>
+
+    <!--Main Content-->
+    <main>
+        <!-- Book Details Section -->
+        <section class="book-details">
+            <div class="container">
+                <div class="row">
+                    <br style="margin-top: 20px;"/>
+
+                    <!-- Book Cover -->
+                    <div class="col s12 m4">
+                        <img src="~/Content/img//bookcovers/alice-in-wonderland-bookcover.jpg" alt="Sample Book Title" class="responsive-img z-depth-3 book-cover" />
+                    </div>
+                    <!-- Book Information -->
+                    <div id="book-info" class="col s12 m8">
+                        <h1 class="book-title">Alice in Wonderland</h1>
+                        <h4 class="book-author">By Lewis Carroll</h4>
+                        <div class="book-rating">
+                            <i class="material-icons">star</i>
+                            <i class="material-icons">star</i>
+                            <i class="material-icons">star</i>
+                            <i class="material-icons">star_half</i>
+                            <i class="material-icons">star_border</i>
+                            <span>(120 ratings)</span>
+                        </div>
+                        <p class="book-description">
+                          Alice, a curious young girl, falls down a rabbit hole while chasing a peculiar White Rabbit and finds herself in Wonderland, a fantastical world filled with strange and eccentric creatures. In her journey, she encounters talking animals, peculiar people, and nonsensical situations, each testing her logic and sense of reality.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- User Actions Section -->
+        <section class="user-actions">
+            <div class="container">
+                <div class="row">
+                    <div class="col s12">
+                        <a href="#" id="add-lib" class="btn waves-effect waves-light">Add to My Library</a>
+                        <a href="#" id="leave-review" class="btn-flat waves-effect">Leave a Review</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reviews Section -->
+        <section class="reviews">
+            <div class="container">
+                <h2>Reviews</h2>
+                <ul class="collection">
+                    <li class="collection-item">
+                        <p><strong><b>Ethan:</b></strong> A classic! Loved the portrayal of 1920s America.</p>
+                        <p><small>January 1, 2024</small></p>
+                    </li>
+                    <li class="collection-item">
+                        <p><strong><b>Thea:</b></strong> A bit overrated, but still a good read.</p>
+                        <p><small>January 2, 2024</small></p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <br style="margin-bottom: 30px;"/>
+
+    <!-- Footer -->
+    <footer class="page-footer bg-white">
+        <div class="footer-container d-flex align-items-center justify-content-between">
+            <!-- Logo Section -->
+            <div class="footer-logo">
+                <img src="~/Content/img/white-logo.png" class="footer-img" alt="Footer Logo" />
+            </div>
+
+            <!-- Links Section -->
+            <div class="footer-links">
+                <ul class="list-inline mb-0">
+                    <li class="list-inline-item"><a href="@Url.Action("AboutUs", "Home")">About Us</a></li>
+                    <li class="list-inline-item"><a href="@Url.Action("Terms", "Home")">Terms & Conditions</a></li>
+                    <li class="list-inline-item"><a href="@Url.Action("Contact", "Home")">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright white-text">
+            <p>© <span>2024</span> <strong class="px-1 sitename">Inkling</strong> <span>All Rights Reserved</span></p>
+        </div>
+    </footer>
+</body>

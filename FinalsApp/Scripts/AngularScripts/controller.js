@@ -134,7 +134,7 @@
     //Initialize Admin Dashboard
     $scope.welcomeAdmin = function () {
         Swal.fire({
-            title: 'Welcome, Admin!',
+            title: 'Welcome!',
             icon: 'success',
             text: 'You can now access the Dashboard.',
             confirmButtonText: 'Continue',
