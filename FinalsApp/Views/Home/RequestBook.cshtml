@@ -1,4 +1,4 @@
-﻿@{
+@{
     Layout = "~/Views/Shared/_RequestBookLayout.cshtml";
     ViewBag.Title = "Request a Book";
 }
@@ -48,27 +48,18 @@
                 <div class="request-container">
                     <h2 class="bookinfo-title">Book Information</h2>
                     <div class="input-field">
-                        <input id="bookTitle" type="text" class="validate" ng-required="true" ng-model="bookTitle" required>
-                        <label for="bookTitle" style="color: black;">Title</label>
+                        <input id="bookTitle" type="text" class="validate" ng-model="bookTitle" required>
+                        <label for="bookTitle" style="color: white;">Title</label>
                     </div>
                     <div class="input-field">
-                        <input id="bookAuthor" type="text" class="validate" ng-required="true" ng-model="bookAuthor" required>
-                        <label for="bookAuthor" style="color: black;">Author</label>
+                        <input id="bookAuthor" type="text" class="validate" ng-model="bookAuthor" required>
+                        <label for="bookAuthor" style="color: white;">Author</label>
                     </div>
                     <div class="input-field">
-                        <input id="bookYear" type="number" class="validate" ng-required="true" ng-model="bookYear" required>
-                        <label for="bookYear" style="color: black;">Year Published</label>
+                        <input id="publishedOn" type="number" class="validate" ng-model="publishedOn" required>
+                        <label for="bookYear" style="color: white;">Year Published</label>
                     </div>
-                    <div class="input-field">
-                        <select id="genre" required>
-                            <option value="" disabled selected>Genre</option>
-                            <option value="horror">Horror</option>
-                            <option value="fantasy">Fantasy</option>
-                            <option value="truecrime">True Crime</option>
-                            <option value="selfhelp">Self-Help</option>
-                        </select>
-                    </div>
-                    <a class="waves-effect waves-light btn-small" ng-click="requestFunc()">Submit</a>
+                    <button class="btn" ng-click="requestBook()">Submit</button>
                 </div>
             </div>
         </section>
