@@ -38,6 +38,14 @@
         });
     };
 
+         this.RequestBook = function (newBook) {
+        return $http({
+            method: "POST",
+            url: "/Home/RequestBook",
+            data: newBook
+        });
+    };
+
     // Lewis' code
     this.getUsersData = function () {
         return $http({
