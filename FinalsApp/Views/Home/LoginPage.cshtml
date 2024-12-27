@@ -1,4 +1,4 @@
-﻿@{
+@{
     Layout = "~/Views/Shared/_LoginPageLayout.cshtml";
     ViewBag.Title = "Login";
 }
@@ -20,7 +20,6 @@
                         <li><a href="@Url.Action("Homepage", "Home")">Home</a></li>
                         <li><a href="@Url.Action("FindBook","Home")">Find A Book</a></li>
                         <li><a href="@Url.Action("RequestBook","Home")">Request A Book</a></li>
-                        <li><a href="@Url.Action("RegisterPage", "Home")">Register</a></li>
                     </ul>
                 </div>
             </nav>
@@ -51,9 +50,6 @@
                     <a href="#">Forgot Password?</a>
                 </div>
                 <button class="btn" ng-click="loginUser()">Login</button>
-                <!--
-                        <button class="btn" ng-click="login()">Login</button>
-                 -->
                 <p>Inkling 2024</p>
             </form>
         </div>
@@ -62,11 +58,11 @@
             <form>
                 <h1>Sign Up</h1>
                 <div class="input-box">
-                    <input type="text" id="fName" placeholder="First Name" ng-model="firstName" required>
+                    <input type="text" id="fName" maxlength="30" placeholder="First Name" ng-model="firstName" required>
                     <i class="material-icons">account_box</i>
                 </div>
                 <div class="input-box">
-                    <input type="text" id="lName" placeholder="Last Name" ng-model="lastName" required>
+                    <input type="text" id="lName" maxlength="30" placeholder="Last Name" ng-model="lastName" required>
                     <i class="material-icons">account_box</i>
                 </div>
                 <div class="input-box">
@@ -74,7 +70,7 @@
                     <i class="material-icons">email</i>
                 </div>
                 <div class="input-box">
-                    <input type="password" id="uPassword" placeholder="Password" ng-model="userPassword" required>
+                    <input type="password" id="uPassword" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Password" ng-model="userPassword" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
                     <i class="material-icons">lock</i>
                 </div>
                 <button class="btn" ng-click="signupUser()">Register</button>
