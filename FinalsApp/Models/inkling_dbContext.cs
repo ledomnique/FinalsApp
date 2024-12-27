@@ -1,4 +1,4 @@
-﻿using MySql.Data.EntityFramework;
+using MySql.Data.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -21,7 +21,8 @@ namespace FinalsApp.Models
         }
 
         public virtual DbSet<users_tblModel> users_tbl { get; set; }
-        /* public virtual DbSet<books_tblModel> books_tbl { get; set; } */
+        public virtual DbSet<books_tblModel> books_tbl { get; set; }
+        public virtual DbSet<bookrequest_tblModel> bookrequest_tbl { get; set; }
 
 
         //if multiple tables in database, multiple virtual DbSet(s)
@@ -29,13 +30,10 @@ namespace FinalsApp.Models
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
             modelBuilder.Configurations.Add(new users_tblMap());
-
-            modelBuilder.Entity<Review>()
-                .HasRequired(r => r.Book) // Reference the navigation property in Review
-                .WithMany(b => b.Reviews) // Reference the navigation property in Book
-                .HasForeignKey(r => r.BookId); // Specify the foreign key property
-
+            modelBuilder.Configurations.Add(new books_tblMap());
+            modelBuilder.Configurations.Add(new bookrequest_tblMap());
         }
     }
 }
