@@ -197,6 +197,17 @@ namespace FinalsApp.Controllers
             }
         }
 
+         public int RequestBook(bookrequest_tblModel newBook)
+ {
+     using (var db = new inkling_dbContext())
+     {
+         newBook.created_on = DateTime.Now;
+         db.bookrequest_tbl.Add(newBook);
+         db.SaveChanges();
+         return newBook.bookreqID;
+     }
+ }
+
         //Lewis' Code
         [HttpGet]
         public System.Web.Mvc.ActionResult Admin()
