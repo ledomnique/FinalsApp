@@ -1,4 +1,4 @@
-﻿@{
+@{
     Layout = "~/Views/Shared/_UserProfileLayout.cshtml";
 }
 
@@ -38,11 +38,11 @@
         <section class="userprofile">
             <div class="profile-container">
                 <div class="profile-header">
-                    <h1>Hi, {{ user.firstName }}</h1>
+                    <h1>Hi, {{ user.firstName }}!</h1>
                 </div>
                 <div class="profile-details">
-                    <p><strong>Name:</strong> {{ user.firstName }} {{ user.lastName }}</p>
-                    <p><strong>Email:</strong> {{ user.email }}</p>
+                    <p><b>Name:</b> {{ user.firstName }} {{ user.lastName }}</p>
+                    <p><b>Email:</b> {{ user.email }}</p>
                 </div>
                 <button id="edit-password-btn" class="edit-password-btn">Edit Password</button>
 
